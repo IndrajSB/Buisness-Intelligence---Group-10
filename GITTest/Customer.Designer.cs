@@ -47,7 +47,7 @@
             this.lstCustomer.FormattingEnabled = true;
             this.lstCustomer.Location = new System.Drawing.Point(46, 74);
             this.lstCustomer.Name = "lstCustomer";
-            this.lstCustomer.Size = new System.Drawing.Size(288, 147);
+            this.lstCustomer.Size = new System.Drawing.Size(282, 134);
             this.lstCustomer.TabIndex = 1;
             // 
             // Customer
