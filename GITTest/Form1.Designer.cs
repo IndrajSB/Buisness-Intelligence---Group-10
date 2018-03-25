@@ -34,7 +34,7 @@
             // 
             // btnGetDates
             // 
-            this.btnGetDates.Location = new System.Drawing.Point(44, 26);
+            this.btnGetDates.Location = new System.Drawing.Point(12, 227);
             this.btnGetDates.Name = "btnGetDates";
             this.btnGetDates.Size = new System.Drawing.Size(75, 23);
             this.btnGetDates.TabIndex = 0;
@@ -45,9 +45,9 @@
             // listBoxDates
             // 
             this.listBoxDates.FormattingEnabled = true;
-            this.listBoxDates.Location = new System.Drawing.Point(55, 99);
+            this.listBoxDates.Location = new System.Drawing.Point(12, 12);
             this.listBoxDates.Name = "listBoxDates";
-            this.listBoxDates.Size = new System.Drawing.Size(120, 95);
+            this.listBoxDates.Size = new System.Drawing.Size(260, 199);
             this.listBoxDates.TabIndex = 1;
             // 
             // Form1
