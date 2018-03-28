@@ -34,9 +34,9 @@
             // 
             // btnCustomer
             // 
-            this.btnCustomer.Location = new System.Drawing.Point(12, 237);
+            this.btnCustomer.Location = new System.Drawing.Point(12, 217);
             this.btnCustomer.Name = "btnCustomer";
-            this.btnCustomer.Size = new System.Drawing.Size(92, 28);
+            this.btnCustomer.Size = new System.Drawing.Size(80, 20);
             this.btnCustomer.TabIndex = 0;
             this.btnCustomer.Text = "Get Customer";
             this.btnCustomer.UseVisualStyleBackColor = true;
@@ -47,14 +47,14 @@
             this.lstCustomer.FormattingEnabled = true;
             this.lstCustomer.Location = new System.Drawing.Point(12, 12);
             this.lstCustomer.Name = "lstCustomer";
-            this.lstCustomer.Size = new System.Drawing.Size(292, 212);
+            this.lstCustomer.Size = new System.Drawing.Size(261, 186);
             this.lstCustomer.TabIndex = 1;
             // 
             // Customer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(316, 277);
+            this.ClientSize = new System.Drawing.Size(285, 249);
             this.Controls.Add(this.lstCustomer);
             this.Controls.Add(this.btnCustomer);
             this.Name = "Customer";
