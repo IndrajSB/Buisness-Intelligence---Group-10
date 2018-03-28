@@ -31,13 +31,25 @@ namespace GITTest
             {
                 connection.Open();
                 OleDbDataReader reader = null;
-                OleDbCommand Customers = new OleDbCommand("SELECT [Customer ID], [Customer Name] from Sheet1'", connection);
+                OleDbCommand Customers = new OleDbCommand("SELECT [Customer ID], [Customer Name], [Country], [City], [State], [Postal Code], [Region]  from Sheet1'", connection);
 
                 reader = Customers.ExecuteReader();
                 while (reader.Read())
                 {
-                    Customer.Add(reader[0].ToString());
-                    Customer.Add(reader[1].ToString());
+                    string CustomerID = reader[0].ToString();
+                    Customer.Add(CustomerID);
+                    string CustomerName = reader[1].ToString();
+                    Customer.Add(CustomerName);
+                    string Country = reader[2].ToString();
+                    Customer.Add(Country);
+                    string City = reader[3].ToString();
+                    Customer.Add(City);
+                    string State = reader[4].ToString();
+                    Customer.Add(State);
+                    string PostalCode = reader[5].ToString();
+                    Customer.Add(PostalCode);
+                    string Region = reader[6].ToString();
+                    Customer.Add(Region);
 
                 }
             }
