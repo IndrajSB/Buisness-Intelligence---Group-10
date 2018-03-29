@@ -26,12 +26,10 @@ namespace GITTest
             int year = Convert.ToInt32(arrayDate[2]);
             int month = Convert.ToInt32(arrayDate[1]);
             int day = Convert.ToInt32(arrayDate[0]);
-
-
+            
             DateTime dateTime = new DateTime(year, month, day);
             Console.WriteLine("Day of week: " + dateTime.DayOfWeek);
-
-
+            
             string dayOfWeek = dateTime.DayOfWeek.ToString();
             int dayOfYear = dateTime.DayOfYear;
             string monthName = dateTime.ToString("MMMM");
@@ -40,7 +38,7 @@ namespace GITTest
             if (dayOfWeek == "Saturday" || dayOfWeek == "Sunday") Weekend = true;
         }
 
-        private void insertTimeDimension()
+        private void insertTimeDimension(string date)
         {
             //create a connection to the MDF file
             string connectionStringDestination = Properties.Settings.Default.DestinationDatabaseConnectionString;
@@ -51,13 +49,30 @@ namespace GITTest
                 myConnection.Open();
                 //the following code uses an SqlCommand based on the SqlConnection
                 SqlCommand command = new SqlCommand("SELECT id FROM Time WHERE date = @date", myConnection);
+
+                //create a variable and assign it to false by default
+                bool exists = false;
+
+                //run the command and read the results
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    
+                    //if there are rows it means the date exists so change the exsists variable.
+                    if (reader.HasRows) exists = true;
+                }
+
+                if(exists == false)
+                {
+
+                }
+
+                command.Parameters.Add(new SqlParameter("date", date));
             }
         }
 
 
         private void btnGetDates_Click(object sender, EventArgs e)
         {
-
             List<string> Dates = new List<string>();
             //clear the listbox
             listBoxDates.Items.Clear();
@@ -84,12 +99,10 @@ namespace GITTest
             {
                 //split the string on whitespace and remove anything thats blank
                 var dates = date.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
-
-            
+                            
                 //grab the first item (we know this is the date) and add it to our new list
                 DatesFormatted.Add(dates[0]);
             }
-
             //Blind the listbox to the list
             listBoxDates.DataSource = DatesFormatted;
 
@@ -103,9 +116,6 @@ namespace GITTest
             string fullDate = DatesFormatted[0].ToString();
             string[] arrayDate1 = fullDate.Split('/');
             Console.WriteLine("day: " + arrayDate[0] + " Month: " + arrayDate[1] + " Year: " + arrayDate[2]);
-                
-
-
         }
 
         private void Form1_Load(object sender, EventArgs e)
