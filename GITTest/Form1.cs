@@ -119,7 +119,7 @@ namespace GITTest
                 var dates = date.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
                             
                 //grab the first item (we know this is the date) and add it to our new list
-                DatesFormatted.Add(dates[0]);
+                DatesFormatted.Add(dates[0]); 
             }
             //Blind the listbox to the list
             listBoxDates.DataSource = DatesFormatted;
