@@ -34,11 +34,14 @@ namespace GITTest
             int dayOfYear = dateTime.DayOfYear;
             string monthName = dateTime.ToString("MMMM");
             int weekNumber = dayOfYear / 7;
-            bool Weekend = false;
-            if (dayOfWeek == "Saturday" || dayOfWeek == "Sunday") Weekend = true;
+            bool weekend = false;
+            if (dayOfWeek == "Saturday" || dayOfWeek == "Sunday") weekend = true;
+            string dbDate = dateTime.ToString("M/dd/yyyy");
+
+            insertTimeDimension(dbDate, dayOfWeek, day, monthName, month, weekNumber, year, weekend, dayOfYear);
         }
 
-        private void insertTimeDimension(string date)
+        private void insertTimeDimension(string date, string dayName, int dayNumber, string monthName, int monthNumber, int weekNumber, int year, bool weekend, int dayOfYear)
         {
             //create a connection to the MDF file
             string connectionStringDestination = Properties.Settings.Default.DestinationDatabaseConnectionString;
@@ -63,7 +66,22 @@ namespace GITTest
 
                 if(exists == false)
                 {
+                    SqlCommand insertCommand = new SqlCommand(
+                        "INSERT INTO Time (dayName, dayNumber, monthName, monthNumber, weekNumber, year, weekend, date, dayOfYear)" +
+                        " VALUES @dayName, @dayNumber, @monthName, @monthName, @weekNumber, @year, @weekend, @date, @dayOfYear ", myConnection);
+                    insertCommand.Parameters.Add(new SqlParameter("dayName", dayName));
+                    insertCommand.Parameters.Add(new SqlParameter("dayNumber", dayNumber));
+                    insertCommand.Parameters.Add(new SqlParameter("monthName", monthName));
+                    insertCommand.Parameters.Add(new SqlParameter("monthName", monthName));
+                    insertCommand.Parameters.Add(new SqlParameter("weekNumber", weekNumber));
+                    insertCommand.Parameters.Add(new SqlParameter("year", year));
+                    insertCommand.Parameters.Add(new SqlParameter("weekend", weekend));
+                    insertCommand.Parameters.Add(new SqlParameter("date", date));
+                    insertCommand.Parameters.Add(new SqlParameter("dayOfYear", dayOfYear));
 
+                    //insert the line
+                    int recordsAffected = insertCommand.ExecuteNonQuery();
+                    Console.WriteLine("Records affected: " + recordsAffected);
                 }
 
                 command.Parameters.Add(new SqlParameter("date", date));
@@ -106,7 +124,13 @@ namespace GITTest
             //Blind the listbox to the list
             listBoxDates.DataSource = DatesFormatted;
 
-            splitDates(DatesFormatted[0]);
+            //split the dates and insert every date in the list
+            foreach(string date in DatesFormatted)
+            {
+                splitDates(date);
+            }
+
+            
             
 
             //These two do the same thing, its down to personal coding style! only use one of them
