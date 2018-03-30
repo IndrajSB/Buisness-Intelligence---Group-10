@@ -31,11 +31,12 @@
             this.btnCustomers = new System.Windows.Forms.Button();
             this.btnDates = new System.Windows.Forms.Button();
             this.btnProduct = new System.Windows.Forms.Button();
+            this.lblSystem = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnCustomers
             // 
-            this.btnCustomers.Location = new System.Drawing.Point(102, 70);
+            this.btnCustomers.Location = new System.Drawing.Point(100, 130);
             this.btnCustomers.Name = "btnCustomers";
             this.btnCustomers.Size = new System.Drawing.Size(75, 23);
             this.btnCustomers.TabIndex = 0;
@@ -45,7 +46,7 @@
             // 
             // btnDates
             // 
-            this.btnDates.Location = new System.Drawing.Point(102, 99);
+            this.btnDates.Location = new System.Drawing.Point(100, 159);
             this.btnDates.Name = "btnDates";
             this.btnDates.Size = new System.Drawing.Size(75, 23);
             this.btnDates.TabIndex = 1;
@@ -55,7 +56,7 @@
             // 
             // btnProduct
             // 
-            this.btnProduct.Location = new System.Drawing.Point(102, 128);
+            this.btnProduct.Location = new System.Drawing.Point(100, 188);
             this.btnProduct.Name = "btnProduct";
             this.btnProduct.Size = new System.Drawing.Size(75, 23);
             this.btnProduct.TabIndex = 2;
@@ -63,17 +64,29 @@
             this.btnProduct.UseVisualStyleBackColor = true;
             this.btnProduct.Click += new System.EventHandler(this.btnProduct_Click);
             // 
+            // lblSystem
+            // 
+            this.lblSystem.AutoSize = true;
+            this.lblSystem.Font = new System.Drawing.Font("Sitka Subheading", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSystem.Location = new System.Drawing.Point(95, 9);
+            this.lblSystem.Name = "lblSystem";
+            this.lblSystem.Size = new System.Drawing.Size(79, 30);
+            this.lblSystem.TabIndex = 3;
+            this.lblSystem.Text = "System";
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.lblSystem);
             this.Controls.Add(this.btnProduct);
             this.Controls.Add(this.btnDates);
             this.Controls.Add(this.btnCustomers);
             this.Name = "MainMenu";
             this.Text = "MainMenu";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -82,5 +95,6 @@
         private System.Windows.Forms.Button btnCustomers;
         private System.Windows.Forms.Button btnDates;
         private System.Windows.Forms.Button btnProduct;
+        private System.Windows.Forms.Label lblSystem;
     }
 }
