@@ -107,6 +107,46 @@ namespace GITTest
 
 
         }
+        private int GetDatetID(string date)
+        {
+            string[] arrayDate = date.Split('/');
+            int year = Convert.ToInt32(arrayDate[2]);
+            int month = Convert.ToInt32(arrayDate[1]);
+            int day = Convert.ToInt32(arrayDate[0]);
+            DateTime dateTime = new DateTime(year, month, day);
+            string dbDate = dateTime.ToString("M/dd/yyyy");
+
+            //create a connection to the MDF File
+            string connectionStringDestination = Properties.Settings.Default.DestinationDatabaseConnectionString;
+            using (SqlConnection myConnection = new SqlConnection(connectionStringDestination))
+            {
+                //open the connection
+                myConnection.Open();
+                //the following code uses
+                SqlCommand command = new SqlCommand("SELECT id FROM Time WHERE date =@date", myConnection);
+                command.Parameters.Add(new SqlParameter("date", dbDate));
+
+                //create a variable
+                bool exists = false;
+                //run the command
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        exists = true;
+                        Console.WriteLine("Data exists");
+                    }
+
+
+                }
+                if (exists == false)
+                {
+
+                }
+            }
+            return  0;
+
+        }
 
         private void Form1_Load(object sender, EventArgs e)
         {
