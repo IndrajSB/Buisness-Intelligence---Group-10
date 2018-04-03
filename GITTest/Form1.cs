@@ -147,7 +147,7 @@ namespace GITTest
             return  0;
 
         }
-        //
+        //load the form
         private void Form1_Load(object sender, EventArgs e)
         {
 
