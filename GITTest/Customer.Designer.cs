@@ -59,6 +59,7 @@
             this.Controls.Add(this.btnCustomer);
             this.Name = "Customer";
             this.Text = "Customer";
+            this.Load += new System.EventHandler(this.Customer_Load);
             this.ResumeLayout(false);
 
         }
