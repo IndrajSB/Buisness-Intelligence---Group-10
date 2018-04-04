@@ -57,5 +57,10 @@ namespace GITTest
 
             //listBoxDates.DataSource = Dates
         }
+
+        private void Product_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

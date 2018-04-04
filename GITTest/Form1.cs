@@ -53,6 +53,12 @@ namespace GITTest
                 //the following code uses an SqlCommand based on the SqlConnection
                 SqlCommand command = new SqlCommand("SELECT id FROM Time WHERE date = @date", myConnection);
 
+                command.Parameters.Add(new SqlParameter("date", date));
+
+                ////insert the line
+                //int RecordsAffected = command.ExecuteNonQuery();
+                //Console.WriteLine("Records affected: " + RecordsAffected);
+
                 //create a variable and assign it to false by default
                 bool exists = false;
 
@@ -68,11 +74,11 @@ namespace GITTest
                 {
                     SqlCommand insertCommand = new SqlCommand(
                         "INSERT INTO Time (dayName, dayNumber, monthName, monthNumber, weekNumber, year, weekend, date, dayOfYear)" +
-                        " VALUES @dayName, @dayNumber, @monthName, @monthName, @weekNumber, @year, @weekend, @date, @dayOfYear ", myConnection);
+                        " VALUES ( @dayName, @dayNumber, @monthName, @monthNumber, @weekNumber, @year, @weekend, @date, @dayOfYear )", myConnection);
                     insertCommand.Parameters.Add(new SqlParameter("dayName", dayName));
                     insertCommand.Parameters.Add(new SqlParameter("dayNumber", dayNumber));
                     insertCommand.Parameters.Add(new SqlParameter("monthName", monthName));
-                    insertCommand.Parameters.Add(new SqlParameter("monthName", monthName));
+                    insertCommand.Parameters.Add(new SqlParameter("monthNumber", monthName));
                     insertCommand.Parameters.Add(new SqlParameter("weekNumber", weekNumber));
                     insertCommand.Parameters.Add(new SqlParameter("year", year));
                     insertCommand.Parameters.Add(new SqlParameter("weekend", weekend));
