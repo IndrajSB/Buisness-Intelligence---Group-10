@@ -75,6 +75,7 @@ namespace GITTest
                     SqlCommand insertCommand = new SqlCommand(
                         "INSERT INTO Time (dayName, dayNumber, monthName, monthNumber, weekNumber, year, weekend, date, dayOfYear)" +
                         " VALUES ( @dayName, @dayNumber, @monthName, @monthNumber, @weekNumber, @year, @weekend, @date, @dayOfYear )", myConnection);
+
                     insertCommand.Parameters.Add(new SqlParameter("dayName", dayName));
                     insertCommand.Parameters.Add(new SqlParameter("dayNumber", dayNumber));
                     insertCommand.Parameters.Add(new SqlParameter("monthName", monthName));
