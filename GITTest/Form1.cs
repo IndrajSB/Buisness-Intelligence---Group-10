@@ -41,6 +41,7 @@ namespace GITTest
             insertTimeDimension(dbDate, dayOfWeek, day, monthName, month, weekNumber, year, weekend, dayOfYear);
         }
 
+
         private void insertTimeDimension(string date, string dayName, int dayNumber, string monthName, int monthNumber, int weekNumber, int year, bool weekend, int dayOfYear)
         {
             //create a connection to the MDF file
@@ -54,10 +55,6 @@ namespace GITTest
                 SqlCommand command = new SqlCommand("SELECT id FROM Time WHERE date = @date", myConnection);
 
                 command.Parameters.Add(new SqlParameter("date", date));
-
-                ////insert the line
-                //int RecordsAffected = command.ExecuteNonQuery();
-                //Console.WriteLine("Records affected: " + RecordsAffected);
 
                 //create a variable and assign it to false by default
                 bool exists = false;
