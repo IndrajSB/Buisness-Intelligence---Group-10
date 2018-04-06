@@ -50,7 +50,6 @@ namespace GITTest
                     Customer.Add(PostalCode);
                     string Region = reader[6].ToString();
                     Customer.Add(Region);
-
                 }
             }
             //create a new list for the formatted data
@@ -68,14 +67,6 @@ namespace GITTest
             lstCustomer.DataSource = CustomerFormatted;
 
             //listBoxDates.DataSource = Dates;
-
-        }
-
-        //Test Data for Krushita's Branch
-        //Test Data for Krushita;'s Branch 2
-
-        private void Customer_Load(object sender, EventArgs e)
-        {
 
         }
     }

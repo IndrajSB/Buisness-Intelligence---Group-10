@@ -177,8 +177,6 @@ namespace GITTest
                         exists = true;
                         Console.WriteLine("Data exists");
                     }
-
-
                 }
                 if (exists == false)
                 {
@@ -188,6 +186,7 @@ namespace GITTest
             return  0;
 
         }
+
         //load the form
         private void Form1_Load(object sender, EventArgs e)
         {
