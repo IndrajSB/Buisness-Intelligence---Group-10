@@ -52,12 +52,13 @@ namespace GITTest
                 myConnection.Open();
                 //the following code uses an SqlCommand based on the SqlConnection
                 SqlCommand command = new SqlCommand("SELECT id FROM Time WHERE date = @date", myConnection);
+                command.Parameters.Add(new SqlParameter("date", date));
 
                 //create a variable and assign it to false by default
                 bool exists = false;
 
                 //run the command and read the results
-                using (SqlDataReader reader = command.ExecuteReader())
+                using ( SqlDataReader reader = command.ExecuteReader())
                 {
                     
                     //if there are rows it means the date exists so change the exsists variable.
@@ -68,10 +69,9 @@ namespace GITTest
                 {
                     SqlCommand insertCommand = new SqlCommand(
                         "INSERT INTO Time (dayName, dayNumber, monthName, monthNumber, weekNumber, year, weekend, date, dayOfYear)" +
-                        " VALUES @dayName, @dayNumber, @monthName, @monthName, @weekNumber, @year, @weekend, @date, @dayOfYear ", myConnection);
+                        " VALUES @dayName, @dayNumber, @monthName, @weekNumber, @year, @weekend, @date, @dayOfYear ", myConnection);
                     insertCommand.Parameters.Add(new SqlParameter("dayName", dayName));
                     insertCommand.Parameters.Add(new SqlParameter("dayNumber", dayNumber));
-                    insertCommand.Parameters.Add(new SqlParameter("monthName", monthName));
                     insertCommand.Parameters.Add(new SqlParameter("monthName", monthName));
                     insertCommand.Parameters.Add(new SqlParameter("weekNumber", weekNumber));
                     insertCommand.Parameters.Add(new SqlParameter("year", year));
@@ -121,7 +121,7 @@ namespace GITTest
                 //grab the first item (we know this is the date) and add it to our new list
                 DatesFormatted.Add(dates[0]); 
             }
-            //Blind the listbox to the list
+            //Bind the listbox to the list
             listBoxDates.DataSource = DatesFormatted;
 
             //split the dates and insert every date in the list
