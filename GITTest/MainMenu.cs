@@ -19,20 +19,20 @@ namespace GITTest
 
         private void btnCustomers_Click(object sender, EventArgs e)
         {
-            Customer Check = new Customer();
-            Check.Show();
+            //Customer Check = new Customer();
+            //Check.Show();
         }
 
         private void btnDates_Click(object sender, EventArgs e)
         {
-            Form1 Check = new Form1();
+            BoxDates Check = new BoxDates();
             Check.Show();
         }
 
         private void btnProduct_Click(object sender, EventArgs e)
         {
-            Product Check = new Product();
-            Check.Show();
+            //Product Check = new Product();
+            //Check.Show();
         }
     }
 }
