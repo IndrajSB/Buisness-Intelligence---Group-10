@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.OleDb;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -34,11 +35,58 @@ namespace GITTest //name space
             int weekNumber = dayOfYear / 7;
             bool Weekend = false;
             if (dayOfWeek == "Saturday" || dayOfWeek == "Sunday") Weekend = true;
+            string dbDate = dateTime.ToString("M/dd/yyyy");
+
+            insertTimeDimension(date, dayOfWeek, day, monthName, month, weekNumber, year, weekend, dayOfYear);
+
         }
 
-        private void insertTimeDimension()
+    private void insertTimeDimension(string date, string dayName, int dayNumber, string monthName, int monthNumber, int weekNumber, int year, bool weekend, int dayOfYear)
         {
-            //inserted commentss
+            //create a connection to the MDF file
+            string connectionStringDestinaion = Properties.Settings.Default.DestinationDatabaseConnectionString;
+
+            using (SqlConnection myConnection = new SqlConnection(connectionStringDestinaion))
+            {
+                //open the sqlConnection
+                myConnection.Open();
+                //the following code uses sqlcommand based on the sql connection
+                SqlCommand command = new SqlCommand("SELECT id FROM Time WHERE date = @date", myConnection);
+
+                //create a variable and assign it to false by default
+                bool exists = false;
+
+                //run the command and read the results
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    //if there are rows it means date exists so change the exisists variables
+                    if (reader.HasRows) exists = true;
+                }
+
+                if(exists = false)
+                {
+                    SqlCommand insertCommand = new SqlCommand(
+                        "INSERT INTO Time (dayName, dayNumber, monthName, monthNumber, weekNumber, year, weekend, date, dayOfYear)" +
+                    " VALUES ( @dayName, @dayNumber, @monthName, @monthNumber, @weekNumber, @year, @weekend, @date, @dayOfYear )", myConnection);
+
+                    insertCommand.Parameters.Add(new SqlParameter("dayName", dayName));
+                    insertCommand.Parameters.Add(new SqlParameter("dayNumber", dayNumber));
+                    insertCommand.Parameters.Add(new SqlParameter("monthName", monthName));
+                    insertCommand.Parameters.Add(new SqlParameter("monthNumber", monthName));
+                    insertCommand.Parameters.Add(new SqlParameter("weekNumber", weekNumber));
+                    insertCommand.Parameters.Add(new SqlParameter("year", year));
+                    insertCommand.Parameters.Add(new SqlParameter("weekend", weekend));
+                    insertCommand.Parameters.Add(new SqlParameter("date", date));
+                    insertCommand.Parameters.Add(new SqlParameter("dayOfYear", dayOfYear));
+
+                    //insert the line
+                    int recordsAffected = insertCommand.ExecuteNonQuery();
+                    Console.WriteLine("Records affected: " + recordsAffected);
+                }
+
+
+                //command.Parameters.Add(new SqlParameter("date", date));
+            }
         }
 
         private void btnGetDates_Click(object sender, EventArgs e)
@@ -76,6 +124,12 @@ namespace GITTest //name space
             }
             //Bind the listbox to the list
             lstBoxDates.DataSource = DatesFormatted;
+
+            //split the dates and insert and insert every date in the list
+            foreach(string date in DatesFormatted)
+            {
+                splitDates(date);
+            }
 
             splitDates(DatesFormatted[0]);
                         
