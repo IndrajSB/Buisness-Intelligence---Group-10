@@ -10,6 +10,7 @@ using System.Windows.Forms;
 
 namespace GITTest
 {
+    //Trace output
     public partial class MainMenu : Form
     {
         public MainMenu()
