@@ -20,8 +20,8 @@ namespace GITTest
 
         private void btnCustomers_ClickEvent(object sender, EventArgs e)
         {
-            //Customer Check = new Customer();
-            //Check.Show();
+            Customer Check = new Customer();
+            Check.Show();
         }
 
         private void btnDates_ClickEvent(object sender, EventArgs e)
@@ -32,8 +32,8 @@ namespace GITTest
 
         private void btnProduct_ClickEvent(object sender, EventArgs e)
         {
-            //Product Check = new Product();
-            //Check.Show();
+            Product Check = new Product();
+            Check.Show();
         }
 
     }

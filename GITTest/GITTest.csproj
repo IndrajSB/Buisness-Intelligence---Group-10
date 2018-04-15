@@ -68,16 +68,16 @@
     <Compile Include="BoxDates.Designer.cs">
       <DependentUpon>BoxDates.cs</DependentUpon>
     </Compile>
+    <Compile Include="Customer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customer.Designer.cs">
+      <DependentUpon>Customer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Data_set_1DataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Data_set_1DataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="Dates.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Dates.Designer.cs">
-      <DependentUpon>Dates.cs</DependentUpon>
     </Compile>
     <Compile Include="DestinationDatabaseDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -95,17 +95,21 @@
     </Compile>
     <Compile Include="MainMenu.Designer_View.cs">
       <DependentUpon>MainMenu_Controller.cs</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Product.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Product.Designer.cs">
+      <DependentUpon>Product.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Time.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Time.Designer.cs">
-      <DependentUpon>Time.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="BoxDates.resx">
       <DependentUpon>BoxDates.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customer.resx">
+      <DependentUpon>Customer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -122,9 +126,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Time.resx">
-      <DependentUpon>Time.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="Data_set_1DataSet.xsc">
       <DependentUpon>Data_set_1DataSet.xsd</DependentUpon>
     </None>

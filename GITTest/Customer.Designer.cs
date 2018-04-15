@@ -1,6 +1,6 @@
 ﻿namespace GITTest
 {
-    partial class Time
+    partial class Customer
     {
         /// <summary>
         /// Required designer variable.
@@ -28,43 +28,43 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.lstBoxDates = new System.Windows.Forms.ListBox();
+            this.btnGetCustomer = new System.Windows.Forms.Button();
+            this.lstCustomer = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
-            // button1
+            // btnGetCustomer
             // 
-            this.button1.Location = new System.Drawing.Point(12, 226);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnGetCustomer.Location = new System.Drawing.Point(12, 226);
+            this.btnGetCustomer.Name = "btnGetCustomer";
+            this.btnGetCustomer.Size = new System.Drawing.Size(86, 23);
+            this.btnGetCustomer.TabIndex = 0;
+            this.btnGetCustomer.Text = "Get Customer";
+            this.btnGetCustomer.UseVisualStyleBackColor = true;
             // 
-            // lstBoxDates
+            // lstCustomer
             // 
-            this.lstBoxDates.FormattingEnabled = true;
-            this.lstBoxDates.Location = new System.Drawing.Point(12, 12);
-            this.lstBoxDates.Name = "lstBoxDates";
-            this.lstBoxDates.Size = new System.Drawing.Size(260, 199);
-            this.lstBoxDates.TabIndex = 1;
+            this.lstCustomer.FormattingEnabled = true;
+            this.lstCustomer.Location = new System.Drawing.Point(12, 12);
+            this.lstCustomer.Name = "lstCustomer";
+            this.lstCustomer.Size = new System.Drawing.Size(260, 199);
+            this.lstCustomer.TabIndex = 1;
             // 
-            // Time
+            // Customer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
-            this.Controls.Add(this.lstBoxDates);
-            this.Controls.Add(this.button1);
-            this.Name = "Time";
-            this.Text = "Time";
+            this.Controls.Add(this.lstCustomer);
+            this.Controls.Add(this.btnGetCustomer);
+            this.Name = "Customer";
+            this.Text = "Customer";
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ListBox lstBoxDates;
+        private System.Windows.Forms.Button btnGetCustomer;
+        private System.Windows.Forms.ListBox lstCustomer;
     }
 }

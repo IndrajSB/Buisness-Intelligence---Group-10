@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace GITTest //name space
+namespace GITTest
 {
     public partial class BoxDates : Form
     {
@@ -29,17 +28,18 @@ namespace GITTest //name space
             int day = Convert.ToInt32(arrayDate[0]); // Take the 1st piece of data for the Day
 
             DateTime dateTime = new DateTime(year, month, day); //combine those pieces of data to send the correct format / date
-            console.log(dateTime) // Trace out the variable to check the correct format
+            //console.log(dateTime) // Trace out the variable to check the correct format
+            Console.WriteLine("Day of week: +" + dateTime.DayOfWeek);
 
             string dayOfWeek = dateTime.DayOfWeek.ToString();
             int dayOfYear = dateTime.DayOfYear;
             string monthName = dateTime.ToString("MMMM");
             int weekNumber = dayOfYear / 7;
-            bool Weekend = false;
-            if (dayOfWeek == "Saturday" || dayOfWeek == "Sunday") Weekend = true; // Capture whether its a weekend or not. - Is it either SAT or SUN
+            bool weekend = false;
+            if (dayOfWeek == "Saturday" || dayOfWeek == "Sunday") weekend = true; // Capture whether its a weekend or not. - Is it either SAT or SUN
             string dbDate = dateTime.ToString("M/dd/yyyy");
 
-            insertTimeDimension(date, dayOfWeek, day, monthName, month, weekNumber, year, weekend, dayOfYear);
+            insertTimeDimension(dbDate, dayOfWeek, day, monthName, month, weekNumber, year, weekend, dayOfYear);
 
         }
     //function to insert the data into the database
@@ -65,7 +65,7 @@ namespace GITTest //name space
                     if (reader.HasRows) exists = true;
                 }
 
-                if(exists = false)
+                if(exists == false)
                 {
                     SqlCommand insertCommand = new SqlCommand(
                         "INSERT INTO Time (dayName, dayNumber, monthName, monthNumber, weekNumber, year, weekend, date, dayOfYear)" +
@@ -87,7 +87,7 @@ namespace GITTest //name space
                 }
 
 
-                //command.Parameters.Add(new SqlParameter("date", date));
+                command.Parameters.Add(new SqlParameter("date", date));
             }
         }
 

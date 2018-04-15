@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace GITTest
 {
-    public partial class Time : Form
+    public partial class Customer : Form
     {
-        public Time()
+        public Customer()
         {
             InitializeComponent();
         }
