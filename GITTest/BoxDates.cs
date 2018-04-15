@@ -38,6 +38,7 @@ namespace GITTest
             bool weekend = false;
             if (dayOfWeek == "Saturday" || dayOfWeek == "Sunday") weekend = true; // Capture whether its a weekend or not. - Is it either SAT or SUN
             string dbDate = dateTime.ToString("M/dd/yyyy");
+            
 
             insertTimeDimension(dbDate, dayOfWeek, day, monthName, month, weekNumber, year, weekend, dayOfYear);
 
@@ -54,7 +55,7 @@ namespace GITTest
                 myConnection.Open();
                 //the following code uses sqlcommand based on the sql connection
                 SqlCommand command = new SqlCommand("SELECT id FROM Time WHERE date = @date", myConnection);
-
+                command.Parameters.Add(new SqlParameter("date", date));
                 //create a variable and assign it to false by default
                 bool exists = false;
 
@@ -81,13 +82,14 @@ namespace GITTest
                     insertCommand.Parameters.Add(new SqlParameter("date", date));
                     insertCommand.Parameters.Add(new SqlParameter("dayOfYear", dayOfYear));
 
+
                     //insert the line
                     int recordsAffected = insertCommand.ExecuteNonQuery();
                     Console.WriteLine("Records affected: " + recordsAffected);
                 }
 
 
-                command.Parameters.Add(new SqlParameter("date", date));
+                command.Parameters.Add(new SqlParameter("@date", date));
             }
         }
 
@@ -113,7 +115,9 @@ namespace GITTest
                     Dates.Add(reader[0].ToString());
                     Dates.Add(reader[1].ToString());
                 }
+
             }
+
             //create a new list for the formatted data
             List<string> DatesFormatted = new List<string>();
 
