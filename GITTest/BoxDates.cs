@@ -29,6 +29,7 @@ namespace GITTest //name space
             int day = Convert.ToInt32(arrayDate[0]); // Take the 1st piece of data for the Day
 
             DateTime dateTime = new DateTime(year, month, day); //combine those pieces of data to send the correct format / date
+            console.log(dateTime) // Trace out the variable to check the correct format
 
             string dayOfWeek = dateTime.DayOfWeek.ToString();
             int dayOfYear = dateTime.DayOfYear;

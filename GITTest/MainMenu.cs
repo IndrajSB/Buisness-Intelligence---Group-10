@@ -24,7 +24,7 @@ namespace GITTest
             //Check.Show();
         }
 
-        private void btnDates_Click(object sender, EventArgs e)
+        private void btnDates_Clicked(object sender, EventArgs e)
         {
             BoxDates Check = new BoxDates();
             Check.Show();
@@ -35,5 +35,6 @@ namespace GITTest
             //Product Check = new Product();
             //Check.Show();
         }
+
     }
 }

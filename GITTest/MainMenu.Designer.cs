@@ -42,7 +42,7 @@
             this.btnCustomers.TabIndex = 0;
             this.btnCustomers.Text = "Customers";
             this.btnCustomers.UseVisualStyleBackColor = true;
-            this.btnCustomers.Click += new System.EventHandler(this.btnCustomers_Click);
+            this.btnCustomers.Click += new System.EventHandler(this.btnCustomers_ClickEvent);
             // 
             // btnDates
             // 
@@ -52,7 +52,7 @@
             this.btnDates.TabIndex = 1;
             this.btnDates.Text = "Dates";
             this.btnDates.UseVisualStyleBackColor = true;
-            this.btnDates.Click += new System.EventHandler(this.btnDates_Click);
+            this.btnDates.Click += new System.EventHandler(this.btnDates_ClickEvent);
             // 
             // btnProduct
             // 
@@ -62,7 +62,7 @@
             this.btnProduct.TabIndex = 2;
             this.btnProduct.Text = "Product";
             this.btnProduct.UseVisualStyleBackColor = true;
-            this.btnProduct.Click += new System.EventHandler(this.btnProduct_Click);
+            this.btnProduct.Click += new System.EventHandler(this.btnProduct_ClickEvent);
             // 
             // lblSystem
             // 
