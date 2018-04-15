@@ -34,13 +34,13 @@
             // 
             // btnGetDates
             // 
-            this.btnGetDates.Location = new System.Drawing.Point(12, 226);
-            this.btnGetDates.Name = "btnGetDates";
-            this.btnGetDates.Size = new System.Drawing.Size(75, 23);
-            this.btnGetDates.TabIndex = 0;
-            this.btnGetDates.Text = "GetDates";
+            this.btnGetDates.Location = new System.Drawing.Point(12, 226); // Position the button on the page / stage.
+            this.btnGetDates.Name = "btnGetDates"; // Add an instance name / ID to the button, so that we can target it in the future if required.
+            this.btnGetDates.Size = new System.Drawing.Size(75, 23); // Define the size of the get date button.
+            this.btnGetDates.TabIndex = 0; // Set the tabbing order, to ensure the user journey remains consistent and falls down the page correctly.
+            this.btnGetDates.Text = "GetDates"; // Add the title of the button.
             this.btnGetDates.UseVisualStyleBackColor = true;
-            this.btnGetDates.Click += new System.EventHandler(this.btnGetDates_Click);
+            this.btnGetDates.Click += new System.EventHandler(this.btnGetDates_Click); // Assign a click handler to detect this button being clicked, so we can fire the function.
             // 
             // lstBoxDates
             // 

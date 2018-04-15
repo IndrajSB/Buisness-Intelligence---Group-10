@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -22,25 +23,25 @@ namespace GITTest //name space
         private void splitDates(string date)
         {
             //split the date down and assign it to varibales for later use
-            string[] arrayDate = date.Split('/');
-            int year = Convert.ToInt32(arrayDate[2]);
-            int month = Convert.ToInt32(arrayDate[1]);
-            int day = Convert.ToInt32(arrayDate[0]);
+            string[] arrayDate = date.Split('/'); //split the original array at every " / "
+            int year = Convert.ToInt32(arrayDate[2]); // Take the 3rd piece of data for the Year
+            int month = Convert.ToInt32(arrayDate[1]); // Take the 3rd piece of data for the Month 
+            int day = Convert.ToInt32(arrayDate[0]); // Take the 1st piece of data for the Day
 
-            DateTime dateTime = new DateTime(year, month, day);
+            DateTime dateTime = new DateTime(year, month, day); //combine those pieces of data to send the correct format / date
 
             string dayOfWeek = dateTime.DayOfWeek.ToString();
             int dayOfYear = dateTime.DayOfYear;
             string monthName = dateTime.ToString("MMMM");
             int weekNumber = dayOfYear / 7;
             bool Weekend = false;
-            if (dayOfWeek == "Saturday" || dayOfWeek == "Sunday") Weekend = true;
+            if (dayOfWeek == "Saturday" || dayOfWeek == "Sunday") Weekend = true; // Capture whether its a weekend or not. - Is it either SAT or SUN
             string dbDate = dateTime.ToString("M/dd/yyyy");
 
             insertTimeDimension(date, dayOfWeek, day, monthName, month, weekNumber, year, weekend, dayOfYear);
 
         }
-
+    //function to insert the data into the database
     private void insertTimeDimension(string date, string dayName, int dayNumber, string monthName, int monthNumber, int weekNumber, int year, bool weekend, int dayOfYear)
         {
             //create a connection to the MDF file

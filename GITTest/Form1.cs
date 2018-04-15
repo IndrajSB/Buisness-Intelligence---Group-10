@@ -95,7 +95,7 @@ namespace GITTest
             }
         }
 
-
+        // DG: When clicking the button we need to fire a click handler to capture the event and send data.
         private void btnGetDates_Click(object sender, EventArgs e)
         {
             List<string> Dates = new List<string>();
