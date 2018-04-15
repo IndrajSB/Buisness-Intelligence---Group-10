@@ -54,6 +54,26 @@ namespace GITTest
                 //bind the listbox to the list
                 lstProducts.DataSource =
                     ProductsFormatted;
+
+                //string[] arrayProduct = ProductsFormatted[0].ToString().Split('/');
+                //string category=Convert.ToString(arrayProduct[1]);
+                //string subcategory = Convert.ToString(arrayProduct[2]);
+                //string name = Convert.ToString(arrayProduct[0]);
+                ////in relation to the dateTime in the example...
+
+                // string productList = new (category, subcategory, name); 
+
+                
+
+                
+
+                Console.WriteLine(Products[0].ToString());
+
+                //string fullProduct = ProductsFormatted[0].ToString();
+                //string[] arrayProduct1 = fullProduct.Split('/');
+                //Console.WriteLine("name" + arrayProduct1[0] + "category" + arrayProduct1[1] + "subcategory" + arrayProduct1[2]);
+
+
             }
         }
     }
