@@ -28,11 +28,45 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.btnProducts = new System.Windows.Forms.Button();
+            this.lstProducts = new System.Windows.Forms.ListBox();
+            this.SuspendLayout();
+            // 
+            // btnProducts
+            // 
+            this.btnProducts.Location = new System.Drawing.Point(31, 24);
+            this.btnProducts.Name = "btnProducts";
+            this.btnProducts.Size = new System.Drawing.Size(99, 41);
+            this.btnProducts.TabIndex = 0;
+            this.btnProducts.Text = "Get Products";
+            this.btnProducts.UseVisualStyleBackColor = true;
+            this.btnProducts.Click += new System.EventHandler(this.btnProducts_Click);
+            // 
+            // lstProducts
+            // 
+            this.lstProducts.FormattingEnabled = true;
+            this.lstProducts.Location = new System.Drawing.Point(31, 84);
+            this.lstProducts.Name = "lstProducts";
+            this.lstProducts.Size = new System.Drawing.Size(241, 147);
+            this.lstProducts.TabIndex = 1;
+            // 
+            // Product
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.lstProducts);
+            this.Controls.Add(this.btnProducts);
+            this.Name = "Product";
             this.Text = "Product";
+            this.Load += new System.EventHandler(this.Product_Load);
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Button btnProducts;
+        private System.Windows.Forms.ListBox lstProducts;
     }
 }
