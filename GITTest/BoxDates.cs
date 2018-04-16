@@ -75,7 +75,7 @@ namespace GITTest
                     insertCommand.Parameters.Add(new SqlParameter("dayName", dayName));
                     insertCommand.Parameters.Add(new SqlParameter("dayNumber", dayNumber));
                     insertCommand.Parameters.Add(new SqlParameter("monthName", monthName));
-                    insertCommand.Parameters.Add(new SqlParameter("monthNumber", monthName));
+                    insertCommand.Parameters.Add(new SqlParameter("monthNumber", monthNumber));
                     insertCommand.Parameters.Add(new SqlParameter("weekNumber", weekNumber));
                     insertCommand.Parameters.Add(new SqlParameter("year", year));
                     insertCommand.Parameters.Add(new SqlParameter("weekend", weekend));
