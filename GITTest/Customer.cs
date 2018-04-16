@@ -75,5 +75,12 @@ namespace GITTest
         {
             this.Close();
         }
-    }
+
+        private void Customer_Load(object sender, EventArgs e)
+        {
+
+        }
+
+       
+        }
 }
