@@ -30,12 +30,17 @@ namespace GITTest
             {
                 connection.Open();
                 OleDbDataReader reader = null;
-                OleDbCommand getCustomers = new OleDbCommand("SELECT [Customer Name], [City] from sheet1'", connection);
+                OleDbCommand getCustomers = new OleDbCommand("SELECT [Customer ID], [Customer Name], Country, City, State, Region, [Postal Code]  from sheet1'", connection);
                 reader = getCustomers.ExecuteReader();
                 while (reader.Read())
                 {
                     Customers.Add(reader[0].ToString());
                     Customers.Add(reader[1].ToString());
+                    Customers.Add(reader[2].ToString());
+                    Customers.Add(reader[3].ToString());
+                    Customers.Add(reader[4].ToString());
+                    Customers.Add(reader[5].ToString());
+                    Customers.Add(reader[6].ToString());
                 }
                 List<string> CustomersFormatted = new List<string>();
                 foreach (string customer in Customers)
