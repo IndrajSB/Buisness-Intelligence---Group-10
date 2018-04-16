@@ -149,5 +149,10 @@ namespace GITTest
 
             Console.WriteLine(Dates[0].ToString());
         }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

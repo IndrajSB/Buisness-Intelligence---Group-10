@@ -30,13 +30,14 @@
         {
             this.btnProducts = new System.Windows.Forms.Button();
             this.lstProducts = new System.Windows.Forms.ListBox();
+            this.btnClose = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnProducts
             // 
-            this.btnProducts.Location = new System.Drawing.Point(31, 24);
+            this.btnProducts.Location = new System.Drawing.Point(172, 217);
             this.btnProducts.Name = "btnProducts";
-            this.btnProducts.Size = new System.Drawing.Size(99, 41);
+            this.btnProducts.Size = new System.Drawing.Size(100, 35);
             this.btnProducts.TabIndex = 0;
             this.btnProducts.Text = "Get Products";
             this.btnProducts.UseVisualStyleBackColor = true;
@@ -45,16 +46,27 @@
             // lstProducts
             // 
             this.lstProducts.FormattingEnabled = true;
-            this.lstProducts.Location = new System.Drawing.Point(31, 84);
+            this.lstProducts.Location = new System.Drawing.Point(12, 12);
             this.lstProducts.Name = "lstProducts";
-            this.lstProducts.Size = new System.Drawing.Size(241, 147);
+            this.lstProducts.Size = new System.Drawing.Size(260, 199);
             this.lstProducts.TabIndex = 1;
+            // 
+            // btnClose
+            // 
+            this.btnClose.Location = new System.Drawing.Point(12, 217);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(100, 35);
+            this.btnClose.TabIndex = 2;
+            this.btnClose.Text = "Close Window";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // Product
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.btnClose);
             this.Controls.Add(this.lstProducts);
             this.Controls.Add(this.btnProducts);
             this.Name = "Product";
@@ -68,5 +80,6 @@
 
         private System.Windows.Forms.Button btnProducts;
         private System.Windows.Forms.ListBox lstProducts;
+        private System.Windows.Forms.Button btnClose;
     }
 }
