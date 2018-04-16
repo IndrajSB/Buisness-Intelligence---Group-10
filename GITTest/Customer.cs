@@ -29,6 +29,7 @@ namespace GITTest
             using (OleDbConnection connection = new OleDbConnection(connectionString))
             {
                 connection.Open();
+
                 OleDbDataReader reader = null;
                 OleDbCommand getCustomers = new OleDbCommand("SELECT [Customer ID], [Customer Name], Country, City, State, Region, [Postal Code]  from sheet1'", connection);
                 reader = getCustomers.ExecuteReader();
@@ -42,6 +43,7 @@ namespace GITTest
                     Customers.Add(reader[5].ToString());
                     Customers.Add(reader[6].ToString());
                 }
+
                 List<string> CustomersFormatted = new List<string>();
                 foreach (string customer in Customers)
                 {
@@ -49,21 +51,32 @@ namespace GITTest
                     var customers = customer.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
                     //grab the first item and add it to the list
                     CustomersFormatted.Add(customers[0]);
-
                 }
+
                 //bind the listbox to the list
                 lstCustomer.DataSource =
                    CustomersFormatted;
 
-                //string[] arrayCustomer = CustomersFormatted[0].ToString().Split('/');
-                //string category=Convert.ToString(arrayCustomer[1]);
-                //string subcategory = Convert.ToString(arrayCustomer[2]);
-                //string name = Convert.ToString(arrayCustomer[0]);
+                //split the dates and insert and insert every date in the list
+                foreach (string customer in CustomersFormatted)
+                {
+                    splitCustomers(customer);
+                }
+
+                splitCustomers(CustomersFormatted[0]);
+
+                string[] arrayCustomer = CustomersFormatted[0].ToString().Split('/');
+                string category = Convert.ToString(arrayCustomer[1]);
+                string subcategory = Convert.ToString(arrayCustomer[2]);
+                string name = Convert.ToString(arrayCustomer[0]);
                 ////in relation to the dateTime in the example...
 
-                // string CustomerList = new (category, subcategory, name); 
+                 //string CustomerList = new (category, subcategory, name); 
+
+                //create a new list for the formatted data
 
 
+                //listBoxDates.DataSource = Dates;
 
 
 
@@ -74,6 +87,14 @@ namespace GITTest
                 //Console.WriteLine("name" + arrayCustomer1[0] + "category" + arrayCustomer1[1] + "subcategory" + arrayCustomer1[2]);
 
             }
+        }
+
+        private void splitCustomers(string customer)
+        {
+            //string[] arrayCustomer = CustomersFormatted[0].ToString().Split('/');
+            //string category = Convert.ToString(arrayCustomer[1]);
+            //string subcategory = Convert.ToString(arrayCustomer[2]);
+            //string name = Convert.ToString(arrayCustomer[0]);
         }
 
         private void btnClose_Click(object sender, EventArgs e)
