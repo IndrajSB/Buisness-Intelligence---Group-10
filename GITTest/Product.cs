@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.OleDb;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -17,6 +18,47 @@ namespace GITTest
         {
             InitializeComponent();
         }
+
+        
+        private void insertProductDimension(string name, string category, string subcategory)
+        {
+            //creaete a connection to the MDF file
+            string connectionStringDestination = Properties.Settings.Default.DestinationDatabaseConnectionString;
+
+            using (SqlConnection myConnection = new SqlConnection(connectionStringDestination))
+            {
+                //open the SqlConnection
+                myConnection.Open();
+                //the following code uses an SqlCOmmand based on the SqlCOnnection
+                SqlCommand command = new SqlCommand("SELECT id FROM Product WHERE name = @name", myConnection); //????????
+
+                //create variable and assign it to false by default
+                bool exists = false;
+
+                //run the command and read the results
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    
+                    //if there are rows, it means the product exists so chnage the exists variabe
+                    if (reader.HasRows) exists = true;
+                }
+                
+                if (exists == false)
+                {
+                    SqlCommand insertCommand = new SqlCommand(
+                        "INSERT INTO Product (category, subcategory, name) " +
+                    "VALUES @category, @subcategory, @name ", myConnection);
+                    insertCommand.Parameters.Add(new SqlParameter("category", category));
+                    insertCommand.Parameters.Add(new SqlParameter("subcategory", subcategory));
+                    insertCommand.Parameters.Add(new SqlParameter("name", name));
+
+                    //insert the line
+                    int recordsAffected = insertCommand.ExecuteNonQuery();
+                    Console.WriteLine("Records affected: " + recordsAffected);
+                }
+            }
+        }
+        
 
         private void btnGetProduct_Click(object sender, EventArgs e)
         {
@@ -38,7 +80,7 @@ namespace GITTest
                 while (reader.Read())
                 {
                     Products.Add(reader[0].ToString());
-                    Products.Add(reader[1].ToString());
+                    //Products.Add(reader[1].ToString());
                 }
             }
             //create a new list for the formatted data
@@ -52,7 +94,9 @@ namespace GITTest
                 ProductsFormatted.Add(products[0]);
             }
             //bind the listbox to the list
-            lstProduct.DataSource = Products;
+            lstProduct.DataSource = ProductsFormatted;
+
+            
         }
     }
 }
