@@ -54,10 +54,23 @@ namespace GITTest
                 }
 
                    //bind the listbox to the list
-                   lstCustomer.DataSource = CustomersFormatted;
+                lstCustomer.DataSource = CustomersFormatted;
 
-                   //split the dates and insert and insert every date in the list
-                   foreach (string customer in CustomersFormatted)
+
+                //string[] arrayCustomer = CustomersFormatted[0].ToString().Split('/');
+                //string customerId = Convert.ToString(arrayCustomer[0]);
+                //string customername = Convert.ToString(arrayCustomer[1]);
+                //string city = Convert.ToString(arrayCustomer[2]);
+
+                //String CustList = new String(customerId, customername, city);
+                //Console.WriteLine( );
+
+                //string fullCustomer = CustomersFormatted[0].ToString();
+                //string[] arrayCustomer1 = fullCustomer.Split('/');
+                //Console.WriteLine("customerId:" + arrayCustomer1[0] + "customername:" + arrayCustomer1[1] + "city:" + arrayCustomer1[2]);
+
+                //split the dates and insert and insert every date in the list
+                foreach (string customer in CustomersFormatted)
                 {
                    splitCustomers(customer);
                 }
@@ -66,56 +79,20 @@ namespace GITTest
         }
 
 
-
-
-
-
-
-
-
         private void splitCustomers(string customer)
         {
-            //Split the customer down and assign it to the variable
-            string[] arrayCustomer = customer.ToString().Split('/');
-            string category = Convert.ToString(arrayCustomer[1]);
-            string subcategory = Convert.ToString(arrayCustomer[2]);
-            string name = Convert.ToString(arrayCustomer[0]);
+            //string[] arrayCustomer = CustomersFormatted[0].ToString().Split('/');
+            //string customerId = arrayCustomer[0];
+            //string customername = arrayCustomer[1];
+            //string city = arrayCustomer[2];
 
-
-            //in relation to the dateTime in the example...
-            //string CustomerList = new string(name, category, subcategory);
-
+            //String CustList = new String(customerId, customername, city);
             
+            //string Customer = 
 
 
-
-
-
-
-
-            //Console.WriteLine("name" + arrayCustomer[0] + "category" + arrayCustomer[1] + "subcategory" + arrayCustomer[2]);
-           
-            //create a new list for the formatted data
-            //lstCustomer.DataSource = Customer;
-
-
-
-
-
-            //Console.WriteLine(Customers[0].ToString());
-
-            //string fullCustomer = CustomersFormatted[0].ToString();
-            //string[] arrayCustomer1 = fullCustomer.Split('/');
-            //Console.WriteLine("name" + arrayCustomer1[0] + "category" + arrayCustomer1[1] + "subcategory" + arrayCustomer1[2]);
         }
                     
-
-
-
-
-
-
-
 
         private void btnClose_Click(object sender, EventArgs e)
         {

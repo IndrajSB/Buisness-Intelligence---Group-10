@@ -93,6 +93,44 @@ namespace GITTest
             }
         }
 
+
+        private int GetDateId (string date)
+        {
+            string[] arrayDate = date.Split('/'); 
+            int year = Convert.ToInt32(arrayDate[2]); 
+            int month = Convert.ToInt32(arrayDate[1]);
+            int day = Convert.ToInt32(arrayDate[0]);
+
+            DateTime dateTime = new DateTime(year, month, day);
+
+            string dbDate = dateTime.ToString("M/dd/yyyy");
+            string connectonStringDestination = Properties.Settings.Default.DestinationDatabaseConnectionString;
+            using (SqlConnection myConnection = new SqlConnection(connectonStringDestination))
+            {
+                myConnection.Open();
+                SqlCommand command = new SqlCommand("SELECT id FROM Time WHERE dat = @date", myConnection);
+                command.Parameters.Add(new SqlParameter("date", dbDate));
+
+                bool exists = false;
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        exists = true;
+                        Console.WriteLine("Data exists!");
+
+                    }
+                }
+                if (exists == false)
+                {
+
+                }
+            }
+            return 0;
+
+        }
+
         private void btnGetDates_Click(object sender, EventArgs e)
         {
             //create new list to store the result in
@@ -199,6 +237,63 @@ namespace GITTest
         }
 
         private void BoxDates_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnLoadData_Click(object sender, EventArgs e)
+        {
+            List<string> dateList = new List<string>(new string[] { "03/01/2014", "04/01/2014", "05/01/2014", "06/01/2014", "07/01/2014", "09/01/2014", "10/01/2014" });
+
+            Dictionary<string, int> salesCount = new Dictionary<string, int>();
+
+
+            //Create a connection to the mdf File 
+            string connectionStringDestination = Properties.Settings.Default.DestinationDatabaseConnectionString;
+
+            foreach (string date in dateList)
+            {
+                using (SqlConnection myConnection = new SqlConnection(connectionStringDestination))
+                {
+                    myConnection.Open();
+
+                    SqlCommand command = new SqlCommand("SELECT COUNT(*) AS SalesNumber FROM FactTable JOIN Time " + "ON FactTable.timeId = Time.id WHERE Time.date = @date; ", myConnection);
+
+                    command.Parameters.Add(new SqlParameter("date", date));
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                salesCount.Add(date, Int32.Parse(reader["SalesNumber"].ToString()));
+                            }
+                        }
+
+                        else
+
+                        {
+                            salesCount.Add(date, 0);
+                        }
+                    }
+                }
+
+            }
+
+            ChartDates2.DataSource = salesCount;
+            ChartDates2.Series[0].XValueMember = "Key";
+            ChartDates2.Series[0].YValueMembers = "Value";
+            ChartDates2.DataBind();
+          
+        }
+
+        private void DatesChart_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabPage2_Click(object sender, EventArgs e)
         {
 
         }
