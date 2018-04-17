@@ -35,9 +35,9 @@
             // 
             // btnGetProduct
             // 
-            this.btnGetProduct.Location = new System.Drawing.Point(197, 226);
+            this.btnGetProduct.Location = new System.Drawing.Point(177, 217);
             this.btnGetProduct.Name = "btnGetProduct";
-            this.btnGetProduct.Size = new System.Drawing.Size(75, 23);
+            this.btnGetProduct.Size = new System.Drawing.Size(95, 32);
             this.btnGetProduct.TabIndex = 0;
             this.btnGetProduct.Text = "Get Product";
             this.btnGetProduct.UseVisualStyleBackColor = true;
@@ -53,9 +53,9 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(12, 226);
+            this.btnClose.Location = new System.Drawing.Point(12, 217);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(75, 23);
+            this.btnClose.Size = new System.Drawing.Size(96, 32);
             this.btnClose.TabIndex = 2;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;

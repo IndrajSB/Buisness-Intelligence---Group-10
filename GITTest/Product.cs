@@ -103,5 +103,10 @@ namespace GITTest
         {
             this.Close();
         }
+
+        private int GetProductId()
+        {      
+            return 0;
+        }
     }
 }
