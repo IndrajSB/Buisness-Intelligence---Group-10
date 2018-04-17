@@ -197,5 +197,10 @@ namespace GITTest
             lstBoxDatesFromDB.DataSource = Destinationdates;
             lstBoxDatesFromDBNamed.DataSource = DestinationDatesNamed;
         }
+
+        private void BoxDates_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

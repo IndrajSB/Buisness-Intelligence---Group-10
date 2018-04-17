@@ -103,6 +103,7 @@
             this.Controls.Add(this.btnGetDates);
             this.Name = "BoxDates";
             this.Text = "BoxDates";
+            this.Load += new System.EventHandler(this.BoxDates_Load);
             this.ResumeLayout(false);
 
         }
