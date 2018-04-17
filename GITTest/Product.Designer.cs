@@ -28,58 +28,44 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnProducts = new System.Windows.Forms.Button();
-            this.lstProducts = new System.Windows.Forms.ListBox();
-            this.btnClose = new System.Windows.Forms.Button();
+            this.btnGetProduct = new System.Windows.Forms.Button();
+            this.lstProduct = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
-            // btnProducts
+            // btnGetProduct
             // 
-            this.btnProducts.Location = new System.Drawing.Point(172, 217);
-            this.btnProducts.Name = "btnProducts";
-            this.btnProducts.Size = new System.Drawing.Size(100, 35);
-            this.btnProducts.TabIndex = 0;
-            this.btnProducts.Text = "Get Products";
-            this.btnProducts.UseVisualStyleBackColor = true;
-            this.btnProducts.Click += new System.EventHandler(this.btnProducts_Click);
+            this.btnGetProduct.Location = new System.Drawing.Point(197, 226);
+            this.btnGetProduct.Name = "btnGetProduct";
+            this.btnGetProduct.Size = new System.Drawing.Size(75, 23);
+            this.btnGetProduct.TabIndex = 0;
+            this.btnGetProduct.Text = "Get Product";
+            this.btnGetProduct.UseVisualStyleBackColor = true;
+            this.btnGetProduct.Click += new System.EventHandler(this.btnGetProduct_Click);
             // 
-            // lstProducts
+            // lstProduct
             // 
-            this.lstProducts.FormattingEnabled = true;
-            this.lstProducts.Location = new System.Drawing.Point(12, 12);
-            this.lstProducts.Name = "lstProducts";
-            this.lstProducts.Size = new System.Drawing.Size(260, 199);
-            this.lstProducts.TabIndex = 1;
-            // 
-            // btnClose
-            // 
-            this.btnClose.Location = new System.Drawing.Point(12, 217);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(100, 35);
-            this.btnClose.TabIndex = 2;
-            this.btnClose.Text = "Close Window";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            this.lstProduct.FormattingEnabled = true;
+            this.lstProduct.Location = new System.Drawing.Point(12, 12);
+            this.lstProduct.Name = "lstProduct";
+            this.lstProduct.Size = new System.Drawing.Size(260, 199);
+            this.lstProduct.TabIndex = 1;
             // 
             // Product
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
-            this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.lstProducts);
-            this.Controls.Add(this.btnProducts);
+            this.Controls.Add(this.lstProduct);
+            this.Controls.Add(this.btnGetProduct);
             this.Name = "Product";
             this.Text = "Product";
-            this.Load += new System.EventHandler(this.Product_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button btnProducts;
-        private System.Windows.Forms.ListBox lstProducts;
-        private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Button btnGetProduct;
+        private System.Windows.Forms.ListBox lstProduct;
     }
 }
