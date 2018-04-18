@@ -211,7 +211,8 @@ namespace GITTest
 
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
-                    if (reader.HasRows){
+                    if (reader.HasRows)
+                    {
                         while (reader.Read())
                         {
                             Destinationdates.Add(reader[0].ToString()+ "," +reader[1].ToString()+","+reader[2].ToString()+"."+

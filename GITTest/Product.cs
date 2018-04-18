@@ -151,5 +151,96 @@ namespace GITTest
         {
 
         }
+
+        private void btnGetFromDestinationDb_Click(object sender, EventArgs e)
+        {
+            //create new list to store the indexed results in
+            List<string> DestinationProducts = new List<string>();
+
+            //create the database string
+            string connectionStringDestination = Properties.Settings.Default.DestinationDatabaseConnectionString;
+
+            using (SqlConnection connection = new SqlConnection(connectionStringDestination))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand("SELECT category, subcategory, name from Product", connection);
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    //if there are rows, it means the date exists so chnage the exists variable
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            DestinationProducts.Add(reader["category"].ToString() + ", " + reader["subcategory"].ToString() + ", " + reader["name"].ToString());
+
+                            //DestinationProductsNamed.Add(reader["category"].ToString() + ", " + reader["subcategory"].ToString() + ", " + reader["name"].ToString());
+                        }
+                    }
+                    else
+                    {
+                        DestinationProducts.Add("No Data present, ");
+                        //DestinationProductsNamed.Add("No Data present");
+                    }
+                }
+            }
+
+            //bind the listbox to the list
+            listBoxFromDbNamed.DataSource = DestinationProducts;
+            //bind the listbox to the list
+            //listBoxFromDbNamed.DataSource = DestinationProductsNamed;
+
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnLoadData_Click(object sender, EventArgs e)
+        {
+            //create an empty list and add in the products
+            List<string> productlist = new List<string>(new string[] { "Office Supplies", "Furniture", "Technology" });
+            //the dictionary type is string
+            Dictionary<string, int> salesCount = new Dictionary<string, int>();
+
+            //create a connection to the MDF File
+            string connectionStringDestination = Properties.Settings.Default.DestinationDatabaseConnectionString;
+
+            //run this code for once for each product in my list (3 times)
+            foreach (string product in productlist)
+            {
+                using (SqlConnection myConnection = new SqlConnection(connectionStringDestination))
+                {
+                    //open my connection
+                    myConnection.Open();
+                    //the following code uses an SqlCommand based on the SqlConnection
+                    SqlCommand command = new SqlCommand("SELECT COUNT(*) AS ProductId FROM FactTable JOIN Product" +
+                    "ON FactTable.ProductId = Product.Id WHERE Product.Id = @ProductId; ", myConnection); //double check this
+
+                    command.Parameters.Add(new SqlParameter("category", product));
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                salesCount.Add(product, char.Parse(reader["ProductId"].ToString()));
+                            }
+                        }
+                        else
+                        {
+                            salesCount.Add(product, 0);
+                        }
+                    }
+
+                }
+
+            }
+            chartProduct.DataSource = salesCount;
+            chartProduct.Series[0].XValueMember = "Key";
+            chartProduct.Series[0].YValueMembers = "Value";
+            chartProduct.DataBind();
+        }
     }
 }
