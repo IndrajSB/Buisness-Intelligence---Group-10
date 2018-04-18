@@ -71,6 +71,7 @@
             this.Controls.Add(this.btnGetProduct);
             this.Name = "Product";
             this.Text = "Product";
+            this.Load += new System.EventHandler(this.Product_Load);
             this.ResumeLayout(false);
 
         }

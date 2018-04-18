@@ -116,6 +116,41 @@ namespace GITTest
         {
 
         }
+        private int GetCustomerId(string name)
+        {
+            //creaete a connection to the MDF file
+            string connectionStringDestination = Properties.Settings.Default.DestinationDatabaseConnectionString;
+
+            using (SqlConnection myConnection = new SqlConnection(connectionStringDestination))
+            {
+                //open the SqlConnection
+                myConnection.Open();
+                //the following code uses an SqlCOmmand based on the SqlCOnnection
+                SqlCommand command = new SqlCommand("SELECT id FROM customer WHERE name = @name", myConnection); //????????
+
+
+                //create variable and assign it to false by default
+                bool exists = false;
+
+                //run the command and read the results
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+
+                    //if there are rows, it means the product exists so chnage the exists variabe
+                    if (reader.HasRows)
+                    {
+                        exists = true;
+                        Console.WriteLine("Data exists");
+                    }
+                }
+
+                if (exists == false)
+                {
+
+                }
+                return 0;
+            }
+        }
 
         private void btnLoadData_Click(object sender, EventArgs e)
         {
