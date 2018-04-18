@@ -78,7 +78,7 @@ namespace GITTest
             {
                 connection.Open();
                 OleDbDataReader reader = null;
-                OleDbCommand getCustomer = new OleDbCommand("SELECT [Customer ID], [Customer Name], City, Country, State, [Postal Code], Region from Sheet1 '", connection);
+                OleDbCommand getCustomer = new OleDbCommand("SELECT [Customer ID], [Customer Name], City, Country, State, [Postal Code], Region from Sheet1 ", connection);
 
                 reader = getCustomer.ExecuteReader();
                 while (reader.Read())
@@ -166,7 +166,7 @@ namespace GITTest
                 {
                     myConnection.Open();
 
-                    SqlCommand command = new SqlCommand("SELECT COUNT(*) AS CustomerID FROM FactTable Join Customer" + "ON FactTable.customerid = Customer.id WHERE CustomerID = @customer; ", myConnection);
+                    SqlCommand command = new SqlCommand("SELECT COUNT(*) AS customerId FROM FactTable JOIN Customer" + "ON FactTable.customerId = customer.Id WHERE Customer.Id = @customer; ", myConnection);
                     command.Parameters.Add(new SqlParameter("customer", customer));
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
