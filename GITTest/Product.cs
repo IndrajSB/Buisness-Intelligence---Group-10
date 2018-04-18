@@ -99,7 +99,7 @@ namespace GITTest
             
         }
 
-        private int GetProductId(string name)
+        private int GetProductId(string product)
         {
             //creaete a connection to the MDF file
             string connectionStringDestination = Properties.Settings.Default.DestinationDatabaseConnectionString;
@@ -109,30 +109,29 @@ namespace GITTest
                 //open the SqlConnection
                 myConnection.Open();
                 //the following code uses an SqlCOmmand based on the SqlCOnnection
-                SqlCommand command = new SqlCommand("SELECT id FROM Product WHERE name = @name", myConnection); //????????
-
+                SqlCommand command = new SqlCommand("SELECT id FROM Product WHERE productid = @productid", myConnection); //????????
+                command.Parameters.Add(new SqlParameter("productid", product));
 
                 //create variable and assign it to false by default
-                bool exists = false;
-
+             
                 //run the command and read the results
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
-
+                    int productId = 0;
                     //if there are rows, it means the product exists so chnage the exists variabe
                     if (reader.HasRows)
                     {
-                        exists = true;
-                        Console.WriteLine("Data exists");
+                        while (reader.Read())
+                        {
+                            productId = Convert.ToInt32(reader["Id"].ToString());
+                        }
                     }
+
+                    return productId;
                 }
+
                 //if is doesnt exist
-                if (exists == false)
-                {
-
-                }
-                return 0;
-
+              
 
             }
         }

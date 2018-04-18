@@ -116,7 +116,7 @@ namespace GITTest
         {
 
         }
-        private int GetCustomerId(string name)
+        private int GetProductId(string Customer)
         {
             //creaete a connection to the MDF file
             string connectionStringDestination = Properties.Settings.Default.DestinationDatabaseConnectionString;
@@ -126,29 +126,26 @@ namespace GITTest
                 //open the SqlConnection
                 myConnection.Open();
                 //the following code uses an SqlCOmmand based on the SqlCOnnection
-                SqlCommand command = new SqlCommand("SELECT id FROM customer WHERE name = @name", myConnection); //????????
-
+                SqlCommand command = new SqlCommand("SELECT id FROM Customer WHERE customerid = @customerid", myConnection); //????????
+                command.Parameters.Add(new SqlParameter("customerid", Customer));
 
                 //create variable and assign it to false by default
-                bool exists = false;
 
                 //run the command and read the results
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
-
+                    int customerId = 0;
                     //if there are rows, it means the product exists so chnage the exists variabe
                     if (reader.HasRows)
                     {
-                        exists = true;
-                        Console.WriteLine("Data exists");
+                        while (reader.Read())
+                        {
+                            customerId = Convert.ToInt32(reader["Id"].ToString());
+                        }
                     }
-                }
 
-                if (exists == false)
-                {
-
+                    return customerId;
                 }
-                return 0;
             }
         }
 
@@ -166,7 +163,7 @@ namespace GITTest
                 {
                     myConnection.Open();
 
-                    SqlCommand command = new SqlCommand("SELECT COUNT(*) AS customerId FROM FactTable JOIN Customer" + "ON FactTable.customerId = customer.Id WHERE Customer.Id = @customer; ", myConnection);
+                    SqlCommand command = new SqlCommand("SELECT COUNT(*) AS customerid FROM FactTable JOIN customer" + "ON FactTable.customerId = Customer.Id WHERE Customer.Id = @customerid; ", myConnection);
                     command.Parameters.Add(new SqlParameter("customer", customer));
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
