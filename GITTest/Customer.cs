@@ -14,6 +14,7 @@ namespace GITTest
 {
     public partial class Customer : Form
     {
+
         public Customer()
         {
             InitializeComponent();
@@ -46,7 +47,7 @@ namespace GITTest
                 {
                     SqlCommand insertCommand = new SqlCommand(
                         "INSERT INTO Customer (name, country, city, state, postalCode, region, reference) " +
-                    "VALUES @name, @country, @state, @postalCode, @region, @reference ", myConnection);
+                    "VALUES @name, @country, @city, @state, @postalCode, @region, @reference ", myConnection);
                     insertCommand.Parameters.Add(new SqlParameter("name", name));
                     insertCommand.Parameters.Add(new SqlParameter("country", country));
                     insertCommand.Parameters.Add(new SqlParameter("city", city));
@@ -77,12 +78,18 @@ namespace GITTest
             {
                 connection.Open();
                 OleDbDataReader reader = null;
-                OleDbCommand getCustomer = new OleDbCommand("SELECT [Customer Name] from Sheet1 '", connection);
+                OleDbCommand getCustomer = new OleDbCommand("SELECT [Customer ID], [Customer Name], City, Country, State, [Postal Code], Region from Sheet1 '", connection);
 
                 reader = getCustomer.ExecuteReader();
                 while (reader.Read())
                 {
                     Customers.Add(reader[0].ToString());
+                    Customers.Add(reader[1].ToString());
+                    Customers.Add(reader[2].ToString());
+                    Customers.Add(reader[3].ToString());
+                    Customers.Add(reader[4].ToString());
+                    Customers.Add(reader[5].ToString());
+                    Customers.Add(reader[6].ToString());
                 }
             }
             //create a new list for the formatted data
@@ -109,5 +116,46 @@ namespace GITTest
         {
 
         }
-    }               
-}
+
+        private void btnLoadData_Click(object sender, EventArgs e)
+        {
+            List<string> customerList = new List<string>(new string[] { "DP-13000", "PO-19195" });
+
+            Dictionary<string, int> salesCount = new Dictionary<string, int>();
+
+            string connectionStringDestination = Properties.Settings.Default.DestinationDatabaseConnectionString;
+
+            foreach (string customer in customerList)
+            {
+                using (SqlConnection myConnection = new SqlConnection(connectionStringDestination))
+                {
+                    myConnection.Open();
+
+                    SqlCommand command = new SqlCommand("SELECT COUNT(*) AS CustomerID FROM FactTable Join Customer" + "ON FactTable.customerid = Customer.id WHERE CustomerID = @customer; ", myConnection);
+                    command.Parameters.Add(new SqlParameter("customer", customer));
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            while (reader.Read())
+                            {
+                                salesCount.Add(customer, char.Parse(reader["CustomerID"].ToString()));
+                            }
+                        }
+                        else
+                        {
+                            salesCount.Add(customer, 0);
+                        }
+                    }
+
+                }
+
+            }
+            CustomerChart.DataSource = salesCount;
+            CustomerChart.Series[0].XValueMember = "Key";
+            CustomerChart.Series[0].YValueMembers = "Value";
+            CustomerChart.DataBind();
+        }
+    }
+}              
+

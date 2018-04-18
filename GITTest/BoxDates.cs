@@ -281,10 +281,10 @@ namespace GITTest
 
             }
 
-            ChartDates2.DataSource = salesCount;
-            ChartDates2.Series[0].XValueMember = "Key";
-            ChartDates2.Series[0].YValueMembers = "Value";
-            ChartDates2.DataBind();
+            DatesChart.DataSource = salesCount;
+            DatesChart.Series[0].XValueMember = "Key";
+            DatesChart.Series[0].YValueMembers = "Value";
+            DatesChart.DataBind();
           
         }
 

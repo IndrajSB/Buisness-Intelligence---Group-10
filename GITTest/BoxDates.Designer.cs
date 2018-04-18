@@ -39,13 +39,13 @@
             this.btnGetDb = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.btnLoadData = new System.Windows.Forms.Button();
-            this.ChartDates2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.DatesChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ChartDates2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DatesChart)).BeginInit();
             this.SuspendLayout();
             // 
             // btnGetDates
@@ -128,19 +128,6 @@
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.ChartDates2);
-            this.tabPage2.Controls.Add(this.btnLoadData);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(914, 356);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
-            // 
             // btnLoadData
             // 
             this.btnLoadData.Location = new System.Drawing.Point(18, 19);
@@ -151,22 +138,36 @@
             this.btnLoadData.UseVisualStyleBackColor = true;
             this.btnLoadData.Click += new System.EventHandler(this.btnLoadData_Click);
             // 
-            // ChartDates2
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.DatesChart);
+            this.tabPage2.Controls.Add(this.btnLoadData);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(914, 356);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabPage2.Click += new System.EventHandler(this.tabPage2_Click);
+            // 
+            // DatesChart
             // 
             chartArea1.Name = "ChartArea1";
-            this.ChartDates2.ChartAreas.Add(chartArea1);
+            this.DatesChart.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
-            this.ChartDates2.Legends.Add(legend1);
-            this.ChartDates2.Location = new System.Drawing.Point(157, 19);
-            this.ChartDates2.Name = "ChartDates2";
+            this.DatesChart.Legends.Add(legend1);
+            this.DatesChart.Location = new System.Drawing.Point(157, 19);
+            this.DatesChart.Name = "DatesChart";
+            this.DatesChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.None;
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
             series1.Legend = "Legend1";
             series1.Name = "Series1";
-            this.ChartDates2.Series.Add(series1);
-            this.ChartDates2.Size = new System.Drawing.Size(300, 300);
-            this.ChartDates2.TabIndex = 1;
-            this.ChartDates2.Text = "chart1";
+            this.DatesChart.Series.Add(series1);
+            this.DatesChart.Size = new System.Drawing.Size(300, 300);
+            this.DatesChart.TabIndex = 1;
+            this.DatesChart.Text = "chart1";
             // 
             // BoxDates
             // 
@@ -180,7 +181,7 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ChartDates2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DatesChart)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -196,7 +197,7 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.DataVisualization.Charting.Chart DatesChart;
         private System.Windows.Forms.Button btnLoadData;
-        private System.Windows.Forms.DataVisualization.Charting.Chart ChartDates2;
     }
 }
