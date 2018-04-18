@@ -66,7 +66,7 @@ namespace GITTest
 
         private void btnGetCustomer_Click(object sender, EventArgs e)
         {
-            //create new list to store the result in
+              //create new list to store the result in
             List<string> Customers = new List<string>();
             //clear the list box
             lstCustomer.Items.Clear();
