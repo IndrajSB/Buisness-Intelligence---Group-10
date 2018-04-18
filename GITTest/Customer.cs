@@ -22,16 +22,18 @@ namespace GITTest
 
         private void insertCustomerDimension(string name, string country, string city, string state, string postalCode, string region, string reference)
         {
-            //creaete a connection to the MDF file
+            //create a connection to the MDF file
             string connectionStringDestination = Properties.Settings.Default.DestinationDatabaseConnectionString;
 
             using (SqlConnection myConnection = new SqlConnection(connectionStringDestination))
             {
                 //open the SqlConnection
                 myConnection.Open();
+                
                 //the following code uses an SqlCOmmand based on the SqlCOnnection
-                SqlCommand command = new SqlCommand("SELECT id FROM Customer WHERE name = @name", myConnection); //????????
-
+                SqlCommand command = new SqlCommand("SELECT Id FROM Customer WHERE name = @name", myConnection);
+                command.Parameters.Add(new SqlParameter("name", name));
+               
                 //create variable and assign it to false by default
                 bool exists = false;
 
@@ -46,8 +48,8 @@ namespace GITTest
                 if (exists == false)
                 {
                     SqlCommand insertCommand = new SqlCommand(
-                        "INSERT INTO Customer (name, country, city, state, postalCode, region, reference) " +
-                    "VALUES @name, @country, @city, @state, @postalCode, @region, @reference ", myConnection);
+                        "INSERT INTO Customer ( id, name, country, city, state, postalCode, region, reference) " +
+                    "VALUES @id, @name, @country, @city, @state, @postalCode, @region, @reference ", myConnection);
                     insertCommand.Parameters.Add(new SqlParameter("name", name));
                     insertCommand.Parameters.Add(new SqlParameter("country", country));
                     insertCommand.Parameters.Add(new SqlParameter("city", city));
@@ -84,12 +86,16 @@ namespace GITTest
                 while (reader.Read())
                 {
                     Customers.Add(reader[0].ToString());
-                    Customers.Add(reader[1].ToString());
-                    Customers.Add(reader[2].ToString());
-                    Customers.Add(reader[3].ToString());
-                    Customers.Add(reader[4].ToString());
-                    Customers.Add(reader[5].ToString());
-                    Customers.Add(reader[6].ToString());
+                    string customerid = reader["Customer ID"].ToString();
+                    string customername = reader["Customer Name"].ToString();
+                    string city = reader["City"].ToString();
+                    string country = reader["Country"].ToString();
+                    string state = reader["State"].ToString();
+                    string postalCode = reader["Postal Code"].ToString();
+                    string region = reader["Region"].ToString();
+                    
+                    //kd
+
                 }
             }
             //create a new list for the formatted data
@@ -126,8 +132,8 @@ namespace GITTest
                 //open the SqlConnection
                 myConnection.Open();
                 //the following code uses an SqlCOmmand based on the SqlCOnnection
-                SqlCommand command = new SqlCommand("SELECT id FROM Customer WHERE customerid = @customerid", myConnection); //????????
-                command.Parameters.Add(new SqlParameter("customerid", Customer));
+                SqlCommand command = new SqlCommand("SELECT Id FROM Customer WHERE customername = @customername", myConnection); //????????
+                command.Parameters.Add(new SqlParameter("customername", Customer));
 
                 //create variable and assign it to false by default
 
@@ -189,6 +195,44 @@ namespace GITTest
             CustomerChart.Series[0].XValueMember = "Key";
             CustomerChart.Series[0].YValueMembers = "Value";
             CustomerChart.DataBind();
+        }
+
+        private void btnGetDestination_Click(object sender, EventArgs e)
+        {
+            //Create the new list to store Indexed results
+            List<string> DestinationCustomers = new List<string>();
+            
+            //Create the Database String
+            string connectionStringForDestination = Properties.Settings.Default.DestinationDatabaseConnectionString;
+
+            //The database connection to the String
+            using (SqlConnection connection = new SqlConnection(connectionStringForDestination))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand("Select id, name, city, country, state, postalCode, region from Customer", connection);
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    //Add Rows
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            DestinationCustomers.Add(reader["id"] + " , " + reader["name"] + " , " +
+                                reader["city"] + " , " + reader["country"] + " , " + reader["state"] + " , " +
+                                reader["postalCode"] + " , " + reader["region"]);
+                        }
+                    }
+
+                    else
+                    {
+                        DestinationCustomers.Add("No Data Present");
+                    }
+                }
+            }
+            //Bind the list box to the data
+            lstBoxFromDBCustomers.DataSource = DestinationCustomers;
+
+
         }
     }
 }              

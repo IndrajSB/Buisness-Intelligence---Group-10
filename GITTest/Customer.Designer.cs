@@ -28,14 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.btnGetCustomer = new System.Windows.Forms.Button();
             this.lstCustomer = new System.Windows.Forms.ListBox();
             this.btnClose = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnGetDestination = new System.Windows.Forms.Button();
+            this.lstBoxFromDBCustomers = new System.Windows.Forms.ListBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.btnLoadData = new System.Windows.Forms.Button();
             this.CustomerChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -47,7 +49,7 @@
             // 
             // btnGetCustomer
             // 
-            this.btnGetCustomer.Location = new System.Drawing.Point(180, 228);
+            this.btnGetCustomer.Location = new System.Drawing.Point(31, 174);
             this.btnGetCustomer.Name = "btnGetCustomer";
             this.btnGetCustomer.Size = new System.Drawing.Size(100, 35);
             this.btnGetCustomer.TabIndex = 0;
@@ -58,14 +60,14 @@
             // lstCustomer
             // 
             this.lstCustomer.FormattingEnabled = true;
-            this.lstCustomer.Location = new System.Drawing.Point(20, 23);
+            this.lstCustomer.Location = new System.Drawing.Point(21, 35);
             this.lstCustomer.Name = "lstCustomer";
-            this.lstCustomer.Size = new System.Drawing.Size(260, 199);
+            this.lstCustomer.Size = new System.Drawing.Size(134, 108);
             this.lstCustomer.TabIndex = 1;
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(20, 228);
+            this.btnClose.Location = new System.Drawing.Point(594, 353);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(100, 35);
             this.btnClose.TabIndex = 2;
@@ -80,21 +82,41 @@
             this.tabControl1.Location = new System.Drawing.Point(22, 25);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(654, 351);
+            this.tabControl1.Size = new System.Drawing.Size(801, 443);
             this.tabControl1.TabIndex = 3;
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.btnGetDestination);
+            this.tabPage1.Controls.Add(this.lstBoxFromDBCustomers);
             this.tabPage1.Controls.Add(this.btnGetCustomer);
             this.tabPage1.Controls.Add(this.btnClose);
             this.tabPage1.Controls.Add(this.lstCustomer);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(646, 325);
+            this.tabPage1.Size = new System.Drawing.Size(793, 417);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // btnGetDestination
+            // 
+            this.btnGetDestination.Location = new System.Drawing.Point(585, 172);
+            this.btnGetDestination.Name = "btnGetDestination";
+            this.btnGetDestination.Size = new System.Drawing.Size(97, 37);
+            this.btnGetDestination.TabIndex = 4;
+            this.btnGetDestination.Text = "Get Destination";
+            this.btnGetDestination.UseVisualStyleBackColor = true;
+            this.btnGetDestination.Click += new System.EventHandler(this.btnGetDestination_Click);
+            // 
+            // lstBoxFromDBCustomers
+            // 
+            this.lstBoxFromDBCustomers.FormattingEnabled = true;
+            this.lstBoxFromDBCustomers.Location = new System.Drawing.Point(195, 25);
+            this.lstBoxFromDBCustomers.Name = "lstBoxFromDBCustomers";
+            this.lstBoxFromDBCustomers.Size = new System.Drawing.Size(487, 134);
+            this.lstBoxFromDBCustomers.TabIndex = 3;
             // 
             // tabPage2
             // 
@@ -103,7 +125,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(646, 325);
+            this.tabPage2.Size = new System.Drawing.Size(793, 417);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -120,17 +142,17 @@
             // 
             // CustomerChart
             // 
-            chartArea1.Name = "ChartArea1";
-            this.CustomerChart.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.CustomerChart.Legends.Add(legend1);
+            chartArea4.Name = "ChartArea1";
+            this.CustomerChart.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.CustomerChart.Legends.Add(legend4);
             this.CustomerChart.Location = new System.Drawing.Point(16, 6);
             this.CustomerChart.Name = "CustomerChart";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.CustomerChart.Series.Add(series1);
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            this.CustomerChart.Series.Add(series4);
             this.CustomerChart.Size = new System.Drawing.Size(300, 300);
             this.CustomerChart.TabIndex = 0;
             this.CustomerChart.Text = "chart1";
@@ -162,5 +184,7 @@
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Button btnLoadData;
         private System.Windows.Forms.DataVisualization.Charting.Chart CustomerChart;
+        private System.Windows.Forms.Button btnGetDestination;
+        private System.Windows.Forms.ListBox lstBoxFromDBCustomers;
     }
 }
