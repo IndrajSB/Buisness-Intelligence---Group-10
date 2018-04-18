@@ -31,6 +31,7 @@ namespace GITTest
                 myConnection.Open();
                 //the following code uses an SqlCOmmand based on the SqlCOnnection
                 SqlCommand command = new SqlCommand("SELECT id FROM Product WHERE name = @name", myConnection); //????????
+                command.Parameters.Add(new SqlParameter("name", name));
 
                 //create variable and assign it to false by default
                 bool exists = false;
@@ -94,9 +95,7 @@ namespace GITTest
                 ProductsFormatted.Add(products[0]);
             }
             //bind the listbox to the list
-            lstProduct.DataSource = ProductsFormatted;
-
-            
+            lstProduct.DataSource = ProductsFormatted;            
         }
 
         private int GetProductId(string product)
