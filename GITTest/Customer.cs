@@ -116,7 +116,7 @@ namespace GITTest
         {
 
         }
-        private int GetProductId(string Customer)
+        private int GetCustomerId(string Customer)
         {
             //creaete a connection to the MDF file
             string connectionStringDestination = Properties.Settings.Default.DestinationDatabaseConnectionString;
@@ -163,15 +163,17 @@ namespace GITTest
                 {
                     myConnection.Open();
 
-                    SqlCommand command = new SqlCommand("SELECT COUNT(*) AS customerid FROM FactTable JOIN customer" + "ON FactTable.customerId = Customer.Id WHERE Customer.Id = @customerid; ", myConnection);
-                    command.Parameters.Add(new SqlParameter("customer", customer));
+                    SqlCommand command = new SqlCommand("SELECT COUNT(*) AS customerId FROM FactTable JOIN Customer" +
+                    "ON FactTable.customerId = Customer.Id WHERE Customer.Id = @customerid; ", myConnection);
+
+                    command.Parameters.Add(new SqlParameter("Customer", customer));
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
                         if (reader.HasRows)
                         {
                             while (reader.Read())
                             {
-                                salesCount.Add(customer, char.Parse(reader["CustomerID"].ToString()));
+                                salesCount.Add(customer, char.Parse(reader["customerId"].ToString()));
                             }
                         }
                         else
