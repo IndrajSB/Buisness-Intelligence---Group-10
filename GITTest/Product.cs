@@ -100,39 +100,41 @@ namespace GITTest
 
         private int GetProductId(string product)
         {
+            //declare string
+            string dbName = "";
+            
             //creaete a connection to the MDF file
             string connectionStringDestination = Properties.Settings.Default.DestinationDatabaseConnectionString;
-
             using (SqlConnection myConnection = new SqlConnection(connectionStringDestination))
             {
                 //open the SqlConnection
                 myConnection.Open();
                 //the following code uses an SqlCOmmand based on the SqlCOnnection
-                SqlCommand command = new SqlCommand("SELECT id FROM Product WHERE productid = @productid", myConnection); //????????
-                command.Parameters.Add(new SqlParameter("productid", product));
+                SqlCommand command = new SqlCommand("SELECT id FROM Product WHERE name = @name", myConnection); //????????
+                command.Parameters.Add(new SqlParameter("name", dbName));
 
                 //create variable and assign it to false by default
-             
+                bool exists = false;
+
                 //run the command and read the results
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
-                    int productId = 0;
+                    //int productId = 0;
                     //if there are rows, it means the product exists so chnage the exists variabe
                     if (reader.HasRows)
                     {
-                        while (reader.Read())
-                        {
-                            productId = Convert.ToInt32(reader["Id"].ToString());
-                        }
-                    }
+                        exists = true;
+                        Console.WriteLine("Data exists!");
+                    }                    
+                }
+                //if is doesnt exist
+                if (exists == false)
+                {
 
-                    return productId;
                 }
 
-                //if is doesnt exist
-              
-
             }
+            return 0;
         }
 
         private void btnClose_Click(object sender, EventArgs e)
