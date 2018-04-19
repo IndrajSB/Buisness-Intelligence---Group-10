@@ -49,7 +49,7 @@
             // 
             // btnGetCustomer
             // 
-            this.btnGetCustomer.Location = new System.Drawing.Point(31, 174);
+            this.btnGetCustomer.Location = new System.Drawing.Point(141, 373);
             this.btnGetCustomer.Name = "btnGetCustomer";
             this.btnGetCustomer.Size = new System.Drawing.Size(100, 35);
             this.btnGetCustomer.TabIndex = 0;
@@ -60,14 +60,14 @@
             // lstCustomer
             // 
             this.lstCustomer.FormattingEnabled = true;
-            this.lstCustomer.Location = new System.Drawing.Point(21, 35);
+            this.lstCustomer.Location = new System.Drawing.Point(6, 25);
             this.lstCustomer.Name = "lstCustomer";
-            this.lstCustomer.Size = new System.Drawing.Size(134, 108);
+            this.lstCustomer.Size = new System.Drawing.Size(235, 342);
             this.lstCustomer.TabIndex = 1;
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(594, 353);
+            this.btnClose.Location = new System.Drawing.Point(926, 396);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(100, 35);
             this.btnClose.TabIndex = 2;
@@ -82,7 +82,7 @@
             this.tabControl1.Location = new System.Drawing.Point(22, 25);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(801, 443);
+            this.tabControl1.Size = new System.Drawing.Size(1045, 465);
             this.tabControl1.TabIndex = 3;
             // 
             // tabPage1
@@ -95,14 +95,14 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(793, 417);
+            this.tabPage1.Size = new System.Drawing.Size(1037, 439);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // btnGetDestination
             // 
-            this.btnGetDestination.Location = new System.Drawing.Point(585, 172);
+            this.btnGetDestination.Location = new System.Drawing.Point(929, 165);
             this.btnGetDestination.Name = "btnGetDestination";
             this.btnGetDestination.Size = new System.Drawing.Size(97, 37);
             this.btnGetDestination.TabIndex = 4;
@@ -113,9 +113,9 @@
             // lstBoxFromDBCustomers
             // 
             this.lstBoxFromDBCustomers.FormattingEnabled = true;
-            this.lstBoxFromDBCustomers.Location = new System.Drawing.Point(195, 25);
+            this.lstBoxFromDBCustomers.Location = new System.Drawing.Point(264, 25);
             this.lstBoxFromDBCustomers.Name = "lstBoxFromDBCustomers";
-            this.lstBoxFromDBCustomers.Size = new System.Drawing.Size(487, 134);
+            this.lstBoxFromDBCustomers.Size = new System.Drawing.Size(762, 134);
             this.lstBoxFromDBCustomers.TabIndex = 3;
             // 
             // tabPage2
@@ -125,7 +125,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(793, 417);
+            this.tabPage2.Size = new System.Drawing.Size(982, 439);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -161,7 +161,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1193, 604);
+            this.ClientSize = new System.Drawing.Size(1503, 634);
             this.Controls.Add(this.tabControl1);
             this.Name = "Customer";
             this.Text = "Customer";

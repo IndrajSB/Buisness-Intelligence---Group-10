@@ -22,22 +22,22 @@ namespace GITTest
 
         private void insertCustomerDimension(string name, string country, string city, string state, string postalCode, string region, string reference)
         {
-            //create a connection to the MDF file
+            //The following creates a connection to the MDF file
             string connectionStringDestination = Properties.Settings.Default.DestinationDatabaseConnectionString;
 
             using (SqlConnection myConnection = new SqlConnection(connectionStringDestination))
             {
-                //open the SqlConnection
+                //This code opens the SQLConnection
                 myConnection.Open();
                 
-                //the following code uses an SqlCOmmand based on the SqlCOnnection
+                //This pull information on the SQLCommand from the SQLConnection
                 SqlCommand command = new SqlCommand("SELECT Id FROM Customer WHERE name = @name", myConnection);
                 command.Parameters.Add(new SqlParameter("name", name));
                
-                //create variable and assign it to false by default
+                //Creating a default boolean to show false
                 bool exists = false;
 
-                //run the command and read the results
+                //This code run the command and read the results
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
 
@@ -68,9 +68,8 @@ namespace GITTest
 
         private void btnGetCustomer_Click(object sender, EventArgs e)
         {
-              //create new list to store the result in
-            List<string> Customers = new List<string>();
-            //clear the list box
+            List<string> Customer = new List<string>();
+            //clear the listbox
             lstCustomer.Items.Clear();
 
             //create the database string
@@ -80,35 +79,41 @@ namespace GITTest
             {
                 connection.Open();
                 OleDbDataReader reader = null;
-                OleDbCommand getCustomer = new OleDbCommand("SELECT [Customer ID], [Customer Name], City, Country, State, [Postal Code], Region from Sheet1 ", connection);
+                OleDbCommand Customers = new OleDbCommand("SELECT [Customer ID], [Customer Name], [Country], [City], [State], [Postal Code], [Region]  from Sheet1'", connection);
 
-                reader = getCustomer.ExecuteReader();
+                reader = Customers.ExecuteReader();
                 while (reader.Read())
                 {
-                    Customers.Add(reader[0].ToString());
-                    string customerid = reader["Customer ID"].ToString();
-                    string customername = reader["Customer Name"].ToString();
-                    string city = reader["City"].ToString();
-                    string country = reader["Country"].ToString();
-                    string state = reader["State"].ToString();
-                    string postalCode = reader["Postal Code"].ToString();
-                    string region = reader["Region"].ToString();
-                    
-                    //kd
+                    string CustomerID = reader[0].ToString();
+                    Customer.Add(CustomerID);
+                    string CustomerName = reader[1].ToString();
+                    Customer.Add(CustomerName);
+                    string Country = reader[2].ToString();
+                    Customer.Add(Country);
+                    string City = reader[3].ToString();
+                    Customer.Add(City);
+                    string State = reader[4].ToString();
+                    Customer.Add(State);
+                    string PostalCode = reader[5].ToString();
+                    Customer.Add(PostalCode);
+                    string Region = reader[6].ToString();
+                    Customer.Add(Region);
 
                 }
             }
+
             //create a new list for the formatted data
             List<string> CustomersFormatted = new List<string>();
 
-            foreach (string customer in Customers)
+            foreach (string customer in Customer)
             {
-                //split the string on whitespace and remove anything bank
-                var products = customer.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
-                //grab the first item (we know this is the date) and add it to our new list
-                CustomersFormatted.Add(products[0]);
+
+                var customers = customer.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
+
+                CustomersFormatted.Add(customers[0]);
             }
-            //bind the listbox to the list
+
+            //Bind the listbox
             lstCustomer.DataSource = CustomersFormatted;
         }
 
@@ -124,24 +129,22 @@ namespace GITTest
         }
         private int GetCustomerId(string Customer)
         {
-            //creaete a connection to the MDF file
+            //create the to the MDF file
             string connectionStringDestination = Properties.Settings.Default.DestinationDatabaseConnectionString;
 
             using (SqlConnection myConnection = new SqlConnection(connectionStringDestination))
             {
-                //open the SqlConnection
+                //open the Sqlconnection
                 myConnection.Open();
-                //the following code uses an SqlCOmmand based on the SqlCOnnection
+               
                 SqlCommand command = new SqlCommand("SELECT Id FROM Customer WHERE customername = @customername", myConnection); //????????
                 command.Parameters.Add(new SqlParameter("customername", Customer));
 
-                //create variable and assign it to false by default
-
-                //run the command and read the results
+                //Run the Command
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
                     int customerId = 0;
-                    //if there are rows, it means the product exists so chnage the exists variabe
+                  
                     if (reader.HasRows)
                     {
                         while (reader.Read())
@@ -209,7 +212,10 @@ namespace GITTest
             using (SqlConnection connection = new SqlConnection(connectionStringForDestination))
             {
                 connection.Open();
-                SqlCommand command = new SqlCommand("Select id, name, city, country, state, postalCode, region from Customer", connection);
+                SqlCommand command = new SqlCommand("SELECT id, name, city, country, state, postalCode, region from Customer", connection);
+
+
+
                 using (SqlDataReader reader = command.ExecuteReader())
                 {
                     //Add Rows
@@ -217,9 +223,8 @@ namespace GITTest
                     {
                         while (reader.Read())
                         {
-                            DestinationCustomers.Add(reader["id"] + " , " + reader["name"] + " , " +
-                                reader["city"] + " , " + reader["country"] + " , " + reader["state"] + " , " +
-                                reader["postalCode"] + " , " + reader["region"]);
+                            DestinationCustomers.Add(reader[0].ToString() + "," + reader[1].ToString() + "," + reader[2].ToString() + "." +
+                                reader[3].ToString() + "," + reader[4].ToString() + "," + reader[5].ToString() + "," + reader[6].ToString());
                         }
                     }
 
