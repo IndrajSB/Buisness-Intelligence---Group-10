@@ -37,9 +37,9 @@
             // 
             // btnCustomers
             // 
-            this.btnCustomers.Location = new System.Drawing.Point(100, 130);
+            this.btnCustomers.Location = new System.Drawing.Point(241, 139);
             this.btnCustomers.Name = "btnCustomers";
-            this.btnCustomers.Size = new System.Drawing.Size(75, 23);
+            this.btnCustomers.Size = new System.Drawing.Size(132, 54);
             this.btnCustomers.TabIndex = 0;
             this.btnCustomers.Text = "Customers";
             this.btnCustomers.UseVisualStyleBackColor = true;
@@ -47,9 +47,9 @@
             // 
             // btnDates
             // 
-            this.btnDates.Location = new System.Drawing.Point(100, 159);
+            this.btnDates.Location = new System.Drawing.Point(64, 139);
             this.btnDates.Name = "btnDates";
-            this.btnDates.Size = new System.Drawing.Size(75, 23);
+            this.btnDates.Size = new System.Drawing.Size(132, 54);
             this.btnDates.TabIndex = 1;
             this.btnDates.Text = "Dates";
             this.btnDates.UseVisualStyleBackColor = true;
@@ -57,9 +57,9 @@
             // 
             // btnProduct
             // 
-            this.btnProduct.Location = new System.Drawing.Point(100, 188);
+            this.btnProduct.Location = new System.Drawing.Point(241, 218);
             this.btnProduct.Name = "btnProduct";
-            this.btnProduct.Size = new System.Drawing.Size(75, 23);
+            this.btnProduct.Size = new System.Drawing.Size(132, 54);
             this.btnProduct.TabIndex = 2;
             this.btnProduct.Text = "Product";
             this.btnProduct.UseVisualStyleBackColor = true;
@@ -68,18 +68,20 @@
             // lblSystem
             // 
             this.lblSystem.AutoSize = true;
-            this.lblSystem.Font = new System.Drawing.Font("Sitka Subheading", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSystem.Location = new System.Drawing.Point(95, 9);
+            this.lblSystem.Font = new System.Drawing.Font("Maiandra GD", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSystem.ForeColor = System.Drawing.Color.Purple;
+            this.lblSystem.Location = new System.Drawing.Point(135, 40);
             this.lblSystem.Name = "lblSystem";
-            this.lblSystem.Size = new System.Drawing.Size(79, 30);
+            this.lblSystem.Size = new System.Drawing.Size(162, 32);
             this.lblSystem.TabIndex = 3;
-            this.lblSystem.Text = "System";
+            this.lblSystem.Text = "Main Menu";
+            this.lblSystem.Click += new System.EventHandler(this.lblSystem_Click);
             // 
             // btnSales
             // 
-            this.btnSales.Location = new System.Drawing.Point(100, 217);
+            this.btnSales.Location = new System.Drawing.Point(64, 218);
             this.btnSales.Name = "btnSales";
-            this.btnSales.Size = new System.Drawing.Size(75, 23);
+            this.btnSales.Size = new System.Drawing.Size(132, 54);
             this.btnSales.TabIndex = 4;
             this.btnSales.Text = "Sales";
             this.btnSales.UseVisualStyleBackColor = true;
@@ -89,7 +91,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.ClientSize = new System.Drawing.Size(452, 373);
             this.Controls.Add(this.btnSales);
             this.Controls.Add(this.lblSystem);
             this.Controls.Add(this.btnProduct);

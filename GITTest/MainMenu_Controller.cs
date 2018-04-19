@@ -41,5 +41,10 @@ namespace GITTest
             frmSales SalesList = new frmSales();
             SalesList.Show();
         }
+
+        private void lblSystem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

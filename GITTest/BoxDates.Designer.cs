@@ -34,14 +34,13 @@
             this.btnGetDates = new System.Windows.Forms.Button();
             this.lstBoxDates = new System.Windows.Forms.ListBox();
             this.btnClose = new System.Windows.Forms.Button();
-            this.lstBoxDatesFromDB = new System.Windows.Forms.ListBox();
             this.lstBoxDatesFromDBNamed = new System.Windows.Forms.ListBox();
             this.btnGetDb = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.btnLoadData = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.DatesChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.btnLoadData = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -50,7 +49,7 @@
             // 
             // btnGetDates
             // 
-            this.btnGetDates.Location = new System.Drawing.Point(169, 247);
+            this.btnGetDates.Location = new System.Drawing.Point(6, 328);
             this.btnGetDates.Name = "btnGetDates";
             this.btnGetDates.Size = new System.Drawing.Size(100, 35);
             this.btnGetDates.TabIndex = 0;
@@ -61,42 +60,34 @@
             // lstBoxDates
             // 
             this.lstBoxDates.FormattingEnabled = true;
-            this.lstBoxDates.Location = new System.Drawing.Point(9, 42);
+            this.lstBoxDates.Location = new System.Drawing.Point(6, 6);
             this.lstBoxDates.Name = "lstBoxDates";
-            this.lstBoxDates.Size = new System.Drawing.Size(260, 199);
+            this.lstBoxDates.Size = new System.Drawing.Size(299, 303);
             this.lstBoxDates.TabIndex = 1;
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(9, 247);
+            this.btnClose.Location = new System.Drawing.Point(652, 328);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(100, 35);
             this.btnClose.TabIndex = 2;
-            this.btnClose.Text = "Close Window";
+            this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // lstBoxDatesFromDB
-            // 
-            this.lstBoxDatesFromDB.FormattingEnabled = true;
-            this.lstBoxDatesFromDB.Location = new System.Drawing.Point(293, 42);
-            this.lstBoxDatesFromDB.Name = "lstBoxDatesFromDB";
-            this.lstBoxDatesFromDB.Size = new System.Drawing.Size(260, 199);
-            this.lstBoxDatesFromDB.TabIndex = 3;
             // 
             // lstBoxDatesFromDBNamed
             // 
             this.lstBoxDatesFromDBNamed.FormattingEnabled = true;
-            this.lstBoxDatesFromDBNamed.Location = new System.Drawing.Point(576, 42);
+            this.lstBoxDatesFromDBNamed.Location = new System.Drawing.Point(311, 6);
             this.lstBoxDatesFromDBNamed.Name = "lstBoxDatesFromDBNamed";
-            this.lstBoxDatesFromDBNamed.Size = new System.Drawing.Size(260, 199);
+            this.lstBoxDatesFromDBNamed.Size = new System.Drawing.Size(441, 303);
             this.lstBoxDatesFromDBNamed.TabIndex = 4;
             // 
             // btnGetDb
             // 
-            this.btnGetDb.Location = new System.Drawing.Point(516, 247);
+            this.btnGetDb.Location = new System.Drawing.Point(166, 328);
             this.btnGetDb.Name = "btnGetDb";
-            this.btnGetDb.Size = new System.Drawing.Size(100, 35);
+            this.btnGetDb.Size = new System.Drawing.Size(139, 35);
             this.btnGetDb.TabIndex = 5;
             this.btnGetDb.Text = "Get From Destination DB";
             this.btnGetDb.UseVisualStyleBackColor = true;
@@ -106,15 +97,15 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(12, 12);
+            this.tabControl1.Location = new System.Drawing.Point(3, -1);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(922, 382);
+            this.tabControl1.Size = new System.Drawing.Size(772, 395);
             this.tabControl1.TabIndex = 6;
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.lstBoxDatesFromDB);
+            this.tabPage1.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.tabPage1.Controls.Add(this.btnGetDb);
             this.tabPage1.Controls.Add(this.btnGetDates);
             this.tabPage1.Controls.Add(this.lstBoxDatesFromDBNamed);
@@ -123,20 +114,9 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(914, 356);
+            this.tabPage1.Size = new System.Drawing.Size(764, 369);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // btnLoadData
-            // 
-            this.btnLoadData.Location = new System.Drawing.Point(18, 19);
-            this.btnLoadData.Name = "btnLoadData";
-            this.btnLoadData.Size = new System.Drawing.Size(75, 23);
-            this.btnLoadData.TabIndex = 0;
-            this.btnLoadData.Text = "Load Data";
-            this.btnLoadData.UseVisualStyleBackColor = true;
-            this.btnLoadData.Click += new System.EventHandler(this.btnLoadData_Click);
             // 
             // tabPage2
             // 
@@ -145,7 +125,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(914, 356);
+            this.tabPage2.Size = new System.Drawing.Size(764, 369);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -169,11 +149,22 @@
             this.DatesChart.TabIndex = 1;
             this.DatesChart.Text = "chart1";
             // 
+            // btnLoadData
+            // 
+            this.btnLoadData.Location = new System.Drawing.Point(18, 19);
+            this.btnLoadData.Name = "btnLoadData";
+            this.btnLoadData.Size = new System.Drawing.Size(75, 23);
+            this.btnLoadData.TabIndex = 0;
+            this.btnLoadData.Text = "Load Data";
+            this.btnLoadData.UseVisualStyleBackColor = true;
+            this.btnLoadData.Click += new System.EventHandler(this.btnLoadData_Click);
+            // 
             // BoxDates
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(948, 396);
+            this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.ClientSize = new System.Drawing.Size(791, 403);
             this.Controls.Add(this.tabControl1);
             this.Name = "BoxDates";
             this.Text = "BoxDates";
@@ -191,7 +182,6 @@
         private System.Windows.Forms.Button btnGetDates;
         private System.Windows.Forms.ListBox lstBoxDates;
         private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.ListBox lstBoxDatesFromDB;
         private System.Windows.Forms.ListBox lstBoxDatesFromDBNamed;
         private System.Windows.Forms.Button btnGetDb;
         private System.Windows.Forms.TabControl tabControl1;

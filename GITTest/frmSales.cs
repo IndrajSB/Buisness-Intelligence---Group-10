@@ -33,7 +33,7 @@ namespace GITTest
             {
                 connection.Open();
                 OleDbDataReader reader = null;
-                OleDbCommand getSale = new OleDbCommand("SELECT [Product ID], [Sales], [Profit],[Discount] from Sheet1 '", connection);
+                OleDbCommand getSale = new OleDbCommand("SELECT [Product ID], [Sales], [Profit], [Discount] from Sheet1 '", connection);
 
                 reader = getSale.ExecuteReader();
                 while (reader.Read())
@@ -58,7 +58,48 @@ namespace GITTest
             //bind the listbox to the list
             lstSales.DataSource = SalesFormatted;
         }
-    }
+
+        private void btnGetfromDestinationDb_Click(object sender, EventArgs e)
+        {
+            //create new list to store the indexed results in
+            List<string> DestinationSales = new List<string>();
+
+            //create the database string
+            string connectionStringDestination = Properties.Settings.Default.DestinationDatabaseConnectionString;
+
+            using (SqlConnection connection = new SqlConnection(connectionStringDestination))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand("SELECT  Sales, Profit, Discount from Sales", connection);
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    //if there are rows, it means the date exists so chnage the exists variable
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            DestinationSales.Add(reader["Sales"].ToString() + ", " + reader["Profit"].ToString() + ", " + reader["Discount"].ToString());
+
+                        }
+                    }
+                    else
+                    {
+                        DestinationSales.Add("No Data present, ");
+                        //DestinationProductsNamed.Add("No Data present");
+                    }
+                }
+            }
+
+            //bind the listbox to the list
+            listBoxFromDbNamed.DataSource = DestinationSales;
         }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+    }
+}
    
 

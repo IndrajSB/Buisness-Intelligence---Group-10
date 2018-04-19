@@ -233,7 +233,7 @@ namespace GITTest
                 }
 
             }
-            lstBoxDatesFromDB.DataSource = Destinationdates;
+
             lstBoxDatesFromDBNamed.DataSource = DestinationDatesNamed;
         }
 
