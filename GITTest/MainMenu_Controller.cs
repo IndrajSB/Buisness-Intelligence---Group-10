@@ -36,5 +36,10 @@ namespace GITTest
             Check.Show();
         }
 
+        private void btnSales_Click(object sender, EventArgs e)
+        {
+            frmSales SalesList = new frmSales();
+            SalesList.Show();
+        }
     }
 }

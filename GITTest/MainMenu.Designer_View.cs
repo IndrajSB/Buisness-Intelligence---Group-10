@@ -32,6 +32,7 @@
             this.btnDates = new System.Windows.Forms.Button();
             this.btnProduct = new System.Windows.Forms.Button();
             this.lblSystem = new System.Windows.Forms.Label();
+            this.btnSales = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnCustomers
@@ -74,11 +75,22 @@
             this.lblSystem.TabIndex = 3;
             this.lblSystem.Text = "System";
             // 
+            // btnSales
+            // 
+            this.btnSales.Location = new System.Drawing.Point(100, 217);
+            this.btnSales.Name = "btnSales";
+            this.btnSales.Size = new System.Drawing.Size(75, 23);
+            this.btnSales.TabIndex = 4;
+            this.btnSales.Text = "Sales";
+            this.btnSales.UseVisualStyleBackColor = true;
+            this.btnSales.Click += new System.EventHandler(this.btnSales_Click);
+            // 
             // MainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.btnSales);
             this.Controls.Add(this.lblSystem);
             this.Controls.Add(this.btnProduct);
             this.Controls.Add(this.btnDates);
@@ -96,5 +108,6 @@
         private System.Windows.Forms.Button btnDates;
         private System.Windows.Forms.Button btnProduct;
         private System.Windows.Forms.Label lblSystem;
+        private System.Windows.Forms.Button btnSales;
     }
 }
