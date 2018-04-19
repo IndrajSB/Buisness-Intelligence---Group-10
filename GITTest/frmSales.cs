@@ -33,27 +33,30 @@ namespace GITTest
             {
                 connection.Open();
                 OleDbDataReader reader = null;
-                OleDbCommand getSale = new OleDbCommand("SELECT [Product ID], [Quantity], [Sales] from Sheet1 '", connection);
+                OleDbCommand getSale = new OleDbCommand("SELECT [Product ID], [Sales], [Profit],[Discount] from Sheet1 '", connection);
 
                 reader = getSale.ExecuteReader();
                 while (reader.Read())
                 {
                     Sales.Add(reader[0].ToString());
-                    //Products.Add(reader[1].ToString());
+                    Sales.Add(reader[1].ToString());
+                    Sales.Add(reader[2].ToString());
+                    Sales.Add(reader[3].ToString());
+
                 }
             }
             //create a new list for the formatted data
-            List<string> ProductsFormatted = new List<string>();
+            List<string>SalesFormatted = new List<string>();
 
             foreach (string Sale in Sales)
             {
                 //split the string on whitespace and remove anything bank
-                var products = Sale.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
+                var sales = Sale.Split(new char[0], StringSplitOptions.RemoveEmptyEntries);
                 //grab the first item (we know this is the date) and add it to our new list
-                ProductsFormatted.Add(products[0]);
+                SalesFormatted.Add(sales[0]);
             }
             //bind the listbox to the list
-            lstSales.DataSource = ProductsFormatted;
+            lstSales.DataSource = SalesFormatted;
         }
     }
         }
